@@ -11,15 +11,19 @@ class LSIClass : public QObject
     Q_OBJECT
 public:
     LSIClass(QObject *parent = nullptr);
+    ~LSIClass();
 
-    /*Q_INVOCABLE*/ const QString &getQuestion() const;
-    /*Q_INVOCABLE*/ void setAnswer(const bool ans);
+    Q_INVOKABLE const QString getQuestion();
+    Q_INVOKABLE void setAnswer(const int ans);
+
+signals:
+    void testEnd();
 
 
 private:
     QFile testQuestions;
     QTextStream *m_in;
-    QMap <int,bool> m_answers;
+    QMap <int,int> m_answers;
     int m_iter;
 
 };

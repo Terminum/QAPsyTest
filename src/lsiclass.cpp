@@ -11,13 +11,24 @@ LSIClass::LSIClass(QObject *parent) :
     m_in = new QTextStream(&testQuestions);
 }
 
-const QString &LSIClass::getQuestion() const
+LSIClass::~LSIClass()
 {
-    qDebug() << m_in->readLine();
-    return QString(m_in->readLine());
+    testQuestions.close();
+    delete m_in;
 }
 
-void LSIClass::setAnswer(const bool ans)
+const QString LSIClass::getQuestion()
+{
+    if (!m_in->atEnd()) {
+        qDebug() << m_answers.size();
+        return m_in->readLine();
+    } else {
+        emit testEnd();
+        return "000";
+    }
+}
+
+void LSIClass::setAnswer(const int ans)
 {
     m_answers.insert(m_iter++,ans);
     qDebug() << m_answers[m_answers.size()-1];

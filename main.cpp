@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include "src/lsiclass.h"
 
 int main(int argc, char *argv[])
@@ -7,12 +8,10 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     LSIClass life;
-    life.getQuestion();
-    life.setAnswer(1);
-    life.setAnswer(0);
-    life.setAnswer(1);
+//    life.getQuestion();
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("LifeStyle", &life);
     const QUrl url(u"qrc:/QAPsyTest/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {
@@ -20,8 +19,6 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         }, Qt::QueuedConnection);
     engine.load(url);
-//    QSharedPointer<QQmlContext> rootContext(engine.rootContext());
-//    rootContext->setContextProperty("Test", life);
 
     return app.exec();
 }
