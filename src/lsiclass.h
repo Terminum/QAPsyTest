@@ -18,10 +18,10 @@ public:
     Q_INVOKABLE double overallTension(); // общая напряженность всех защит (ОНЗ)
     Q_INVOKABLE double repressionTension(); //Вытеснение
     Q_INVOKABLE double regressusTension(); //Регрессия
-    Q_INVOKABLE double substitutionTension(); //Замещениеs
+    Q_INVOKABLE double substitutionTension(); //Замещение
     Q_INVOKABLE double denialTension(); //Отрицание
     Q_INVOKABLE double projectioTension(); //Проекция
-    Q_INVOKABLE double сompensationTension(); //Компенсация
+    Q_INVOKABLE double compensationTension(); //Компенсация
     Q_INVOKABLE double hyperCompensationTension(); //Гиперкомпенсация
     Q_INVOKABLE double rationalisTension(); //Рационализация
 

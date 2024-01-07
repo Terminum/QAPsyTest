@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>LifeStyleIndexKellermanKonte.txt</file>
+        <file>LifeStyleCharts.qml</file>
     </qresource>
 </RCC>

@@ -20,26 +20,28 @@ LSIClass::~LSIClass()
 const QString LSIClass::getQuestion()
 {
     if (!m_in->atEnd()) {
-        qDebug() << m_answers.size();
         return m_in->readLine();
     } else {
         m_testEnded = true;
         emit testEnd();
+        qDebug() << "Overall:" << overallTension();
         return "000";
     }
 }
 
 void LSIClass::setAnswer(const int ans)
 {
-    m_answers.insert(m_iter++,ans);
-    qDebug() << m_answers[m_answers.size()-1];
+    if(!m_testEnded) {
+        m_answers.insert(m_iter++,ans);
+    }
 }
 
 double LSIClass::overallTension()
 {
     if(!m_testEnded)
         return 0;
-    return m_answers.keys(1).count() / 92;
+//    qDebug() << "keys count:" << m_answers.keys(1).count();
+    return (double)m_answers.keys(1).count() / (double)92;
 }
 
 double LSIClass::regressusTension()
@@ -47,7 +49,7 @@ double LSIClass::regressusTension()
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[1]};
+    double res = m_answers[1];
     res += m_answers[4];
     res += m_answers[8];
     res += m_answers[12];
@@ -64,7 +66,7 @@ double LSIClass::regressusTension()
     res += m_answers[71];
     res += m_answers[74];
     res += m_answers[83];
-    return res / 17;
+    return res / (double)17;
 }
 
 double LSIClass::substitutionTension()
@@ -72,7 +74,7 @@ double LSIClass::substitutionTension()
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[7]};
+    double res = m_answers[7];
     res += m_answers[9];
     res += m_answers[18];
     res += m_answers[20];
@@ -82,7 +84,7 @@ double LSIClass::substitutionTension()
     res += m_answers[57];
     res += m_answers[75];
     res += m_answers[88];
-    return res / 10;
+    return res / (double)10;
 }
 
 double LSIClass::denialTension()
@@ -90,7 +92,7 @@ double LSIClass::denialTension()
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[0]};
+    double res = m_answers[0];
     res += m_answers[19];
     res += m_answers[22];
     res += m_answers[25];
@@ -101,7 +103,7 @@ double LSIClass::denialTension()
     res += m_answers[46];
     res += m_answers[62];
     res += m_answers[89];
-    return res / 11;
+    return res / (double)11;
 }
 
 double LSIClass::projectioTension()
@@ -109,7 +111,7 @@ double LSIClass::projectioTension()
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[11]};
+    double res = m_answers[11];
     res += m_answers[21];
     res += m_answers[27];
     res += m_answers[28];
@@ -121,15 +123,15 @@ double LSIClass::projectioTension()
     res += m_answers[78];
     res += m_answers[81];
     res += m_answers[87];
-    return res / 12;
+    return res / (double)12;
 }
 
-double LSIClass::сompensationTension()
+double LSIClass::compensationTension()
 {
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[2]};
+    double res = m_answers[2];
     res += m_answers[14];
     res += m_answers[15];
     res += m_answers[17];
@@ -139,7 +141,7 @@ double LSIClass::сompensationTension()
     res += m_answers[56];
     res += m_answers[82];
     res += m_answers[84];
-    return res / 10;
+    return res / (double)10;
 }
 
 double LSIClass::hyperCompensationTension()
@@ -147,7 +149,7 @@ double LSIClass::hyperCompensationTension()
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[16]};
+    double res = m_answers[16];
     res += m_answers[52];
     res += m_answers[60];
     res += m_answers[64];
@@ -157,7 +159,7 @@ double LSIClass::hyperCompensationTension()
     res += m_answers[79];
     res += m_answers[80];
     res += m_answers[85];
-    return res / 10;
+    return res / (double)10;
 }
 
 double LSIClass::rationalisTension()
@@ -165,7 +167,7 @@ double LSIClass::rationalisTension()
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[3]};
+    double res = m_answers[3];
     res += m_answers[6];
     res += m_answers[13];
     res += m_answers[29];
@@ -177,15 +179,15 @@ double LSIClass::rationalisTension()
     res += m_answers[59];
     res += m_answers[86];
     res += m_answers[90];
-    return res / 12;
+    return res / (double)12;
 }
 
-double LSIClass::RepressionTension()
+double LSIClass::repressionTension()
 {
     if(!m_testEnded)
         return 0;
 
-    int res {m_answers[5]};
+    double res = m_answers[5];
     res += m_answers[10];
     res += m_answers[30];
     res += m_answers[33];
@@ -195,5 +197,5 @@ double LSIClass::RepressionTension()
     res += m_answers[72];
     res += m_answers[76];
     res += m_answers[91];
-    return res / 10;
+    return res / (double)10;
 }

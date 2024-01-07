@@ -1,4 +1,4 @@
-QT += quick
+QT += charts qml quick
 
 SOURCES += \
         main.cpp \
@@ -22,3 +22,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     src/lsiclass.h
+
+DISTFILES += \
+    LifeStyleCharts.qml
