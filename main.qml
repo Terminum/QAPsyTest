@@ -12,6 +12,9 @@ Window {
         id: _qText
         anchors.centerIn: parent
         text: qsTr("text")
+        //Внимательно прочитайте приведенные ниже утверждения, описывающие чувства,
+        //поведение и реакции людей в определенных жизненных ситуациях, и если они
+        //имеют к Вам отношение, то отметьте соответствующие номера знаком "+".
     }
 
     Button {
@@ -33,6 +36,15 @@ Window {
         onClicked: {
             _qText.text = LifeStyle.getQuestion()
             LifeStyle.setAnswer(0);
+        }
+    }
+
+    Connections {
+        target: LifeStyle
+
+        function onTestEnd() {
+            console.log("Test End")
+            // do something on test ended
         }
     }
 }
