@@ -19,7 +19,7 @@ Window {
         PieSeries {
             id: pieSeries
             PieSlice { label: "ОНЗ"; value: LifeStyle.overallTension() }
-            PieSlice { value: 100 - LifeStyle.overallTension()}
+            PieSlice { value: 1 - LifeStyle.overallTension()}
         }
 
     }

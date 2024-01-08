@@ -79,7 +79,6 @@ Item {
 
             function onTestEnd() {
                 console.log("Test End")
-                // do something on test ended
                 pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"))
             }
         }
