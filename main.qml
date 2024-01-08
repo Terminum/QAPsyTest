@@ -12,10 +12,12 @@ Window {
     Text {
         id: _qText
         anchors.centerIn: parent
-        text: qsTr("text")
+        text: qsTr("Внимательно прочитайте приведенные ниже утверждения, описывающие чувства,
+                поведение и реакции людей в определенных жизненных ситуациях, и если они
+                имеют к Вам отношение, то ответьте утвердительно.")
         //Внимательно прочитайте приведенные ниже утверждения, описывающие чувства,
         //поведение и реакции людей в определенных жизненных ситуациях, и если они
-        //имеют к Вам отношение, то отметьте соответствующие номера знаком "+".
+        //имеют к Вам отношение, то ответьте утвердительно.
     }
 
     Button {
@@ -24,6 +26,8 @@ Window {
         anchors.top: _qText.bottom
 
         onClicked: {
+            if (!_buttonNo.visible)
+                _buttonNo.visible = true
             _qText.text = LifeStyle.getQuestion()
             LifeStyle.setAnswer(1);
         }
@@ -31,6 +35,7 @@ Window {
 
     Button {
         id: _buttonNo
+        visible: false
         text: "No"
         anchors.top: _buttonYes.bottom
 
@@ -48,4 +53,5 @@ Window {
             // do something on test ended
         }
     }
+
 }
