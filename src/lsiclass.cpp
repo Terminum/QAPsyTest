@@ -24,7 +24,7 @@ const QString LSIClass::getQuestion()
         return m_in->readLine();
     } else {
         emit testEnd();
-        return "000";
+        return "";
     }
 }
 

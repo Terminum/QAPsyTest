@@ -5,6 +5,8 @@ import QtQuick.Layouts
 Item {
     id: _window
 
+    property StackView pageStack: StackView.view
+
     Rectangle {
         anchors.fill: parent
         color: "blue"
@@ -78,6 +80,7 @@ Item {
             function onTestEnd() {
                 console.log("Test End")
                 // do something on test ended
+                pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"))
             }
         }
 }
