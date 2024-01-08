@@ -4,7 +4,7 @@ SOURCES += \
         main.cpp \
         src/lsiclass.cpp
 
-resources.files = main.qml 
+resources.files = main.qml
 resources.prefix = /$${TARGET}
 RESOURCES += resources \
     res.qrc
@@ -22,3 +22,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     src/lsiclass.h
+
+DISTFILES += \
+    ChooseThemeScreen.qml \
+    FirstScreen.qml \
+    MainCustomBtn.qml \
+    TestProject.qml \
+    TestScreen.qml
