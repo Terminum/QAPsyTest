@@ -1,14 +1,13 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "src/lsiclass.h"
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     LSIClass life;
-//    life.getQuestion();
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("LifeStyle", &life);

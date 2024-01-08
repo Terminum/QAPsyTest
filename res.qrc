@@ -7,5 +7,6 @@
         <file>ChooseThemeScreen.qml</file>
         <file>TestScreen.qml</file>
         <file>MainCustomBtn.qml</file>
+        <file>LifeStyleCharts.qml</file>
     </qresource>
 </RCC>
