@@ -28,7 +28,9 @@ Item {
         Text {
             id: _qText
             anchors.centerIn: parent
-            text: qsTr("text")
+            text: qsTr("Внимательно прочитайте приведенные ниже утверждения, описывающие чувства,
+        поведение и реакции людей в определенных жизненных ситуациях, и если они
+        имеют к Вам отношение, то ответьте утердительно.")
             color: "white"
             wrapMode: Text.WordWrap
             Layout.preferredWidth: parent.width
@@ -44,6 +46,8 @@ Item {
             padding: parent.width * 0.2
 
             onClicked: {
+                if(!_buttonNo.visible)
+                    _buttonNo.visible = true
                 _qText.text = LifeStyle.getQuestion()
                 LifeStyle.setAnswer(1)
             }
@@ -54,6 +58,7 @@ Item {
         Button {
             id: _buttonNo
             text: "No"
+            visible: false
             anchors.top: _buttonYes.bottom
             width: parent.width
             padding: parent.width * 0.2
@@ -67,4 +72,12 @@ Item {
             Layout.fillWidth: true
         }
     }
+    Connections {
+            target: LifeStyle
+
+            function onTestEnd() {
+                console.log("Test End")
+                // do something on test ended
+            }
+        }
 }

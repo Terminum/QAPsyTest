@@ -1,4 +1,4 @@
-QT += quick
+QT += charts qml quick
 
 SOURCES += \
         main.cpp \
