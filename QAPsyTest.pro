@@ -24,5 +24,6 @@ HEADERS += \
     src/lsiclass.h
 
 DISTFILES += \
+    ChooseThemeScreen.qml \
     FirstScreen.qml \
     TestProject.qml

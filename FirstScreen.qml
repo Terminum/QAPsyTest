@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls 2.15
 import QtQuick.Layouts
 
 Item {
@@ -7,6 +7,7 @@ Item {
 
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
+    property var pageStack: null
 
     Image {
         id: _imgBg
@@ -133,6 +134,10 @@ Item {
 
             onReleased: {
                 _startBtnRect.color = accentColor
+            }
+
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"))
             }
         }
 
