@@ -6,5 +6,6 @@
         <file>Images/logotype.svg</file>
         <file>ChooseThemeScreen.qml</file>
         <file>TestScreen.qml</file>
+        <file>MainCustomBtn.qml</file>
     </qresource>
 </RCC>

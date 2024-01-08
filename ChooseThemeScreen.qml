@@ -141,39 +141,14 @@ Item {
                 }
             }
 
-            Button {
-                id: _continueBtn
-                text: qsTr("Get started")
-                Layout.rightMargin: parent.width * 0.05
-                Layout.leftMargin: parent.width * 0.05
-                Layout.fillWidth: true
+            MainCustomBtn {
+                idBtn: _continueBtn
+                idBtnText: _continueBtnText
+                idBtnRect: _continueBtnRect
+                btnText: "Continue"
+
                 Layout.bottomMargin: parent.height * 0.03
                 Layout.alignment: Qt.AlignBottom
-
-                contentItem: Text {
-                    id: _continueBtnText
-                    text: _continueBtn.text
-                    color: "#ffffff"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    padding: _continueBtn.height * 0.1
-                    font.pixelSize: 16
-                    font.bold: true
-                }
-
-                background: Rectangle {
-                    id: _continueBtnRect
-                    radius: 100
-                    color: accentColor
-                }
-
-                onPressed: {
-                    _continueBtnRect.color = secondaryColor
-                }
-
-                onReleased: {
-                    _continueBtnRect.color = accentColor
-                }
 
                 onClicked: {
                     if (itemIschecked === false) {

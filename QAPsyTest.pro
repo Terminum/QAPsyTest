@@ -26,5 +26,6 @@ HEADERS += \
 DISTFILES += \
     ChooseThemeScreen.qml \
     FirstScreen.qml \
+    MainCustomBtn.qml \
     TestProject.qml \
     TestScreen.qml

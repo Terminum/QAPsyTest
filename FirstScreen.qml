@@ -104,37 +104,11 @@ Item {
             wrapMode: Text.WordWrap
         }
 
-        Button {
-            id: _startBtn
-            text: qsTr("Get started")
-            Layout.rightMargin: parent.width * 0.05
-            Layout.leftMargin: parent.width * 0.05
-            Layout.fillWidth: true
-
-            contentItem: Text {
-                id: _startBtnText
-                text: _startBtn.text
-                color: "#ffffff"
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                padding: _startBtn.height * 0.08
-                font.pixelSize: 16
-                font.bold: true
-            }
-
-            background: Rectangle {
-                id: _startBtnRect
-                radius: 100
-                color: accentColor
-            }
-
-            onPressed: {
-                _startBtnRect.color = secondaryColor
-            }
-
-            onReleased: {
-                _startBtnRect.color = accentColor
-            }
+        MainCustomBtn {
+            idBtn: _startBtn
+            idBtnText: _startBtnText
+            idBtnRect: _startBtnRect
+            btnText: "Get started"
 
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"))
