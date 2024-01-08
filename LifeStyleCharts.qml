@@ -1,11 +1,12 @@
-import QtQuick 2.15
-import QtCharts 2.0
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
+import QtQuick
+import QtCharts
+import QtQuick.Window
+import QtQuick.Controls
 
-Window {
+Item {
     id: _window
     visible: true
+    property StackView pageStack: StackView.view
 
     ChartView { // отображение величин
         id: chart
@@ -24,31 +25,13 @@ Window {
 
     }
 
-//    ChartView {
-//        title: "Напряженность психологической защиты"
-//        anchors.fill: parent
-//        legend.alignment: Qt.AlignBottom
-//        antialiasing: true
+    Button {
+        text: "Tuta"
 
-//        HorizontalBarSeries {
-//            axisY: BarCategoryAxis {
-//                categories: ["Вытеснение",
-//                    "Регрессия",
-//                    "Замещение",
-//                    "Отрицание",
-//                    "Проекция",
-//                    "Компенсация",
-//                    "Гиперкомпенсация",
-//                    "Рационализация"] }
-//            BarSet { label: "Name"; values: [2, // LifeStyle.repressionTension()
-//                    2, // LifeStyle.regressusTension()
-//                    3, // LifeStyle.substitutionTension()
-//                    4, // LifeStyle.denialTension()
-//                    5, // LifeStyle.projectioTension()
-//                    6, // LifeStyle.compensationTension()
-//                    7, // LifeStyle.hyperCompensationTension()
-//                    8, // LifeStyle.rationalisTension()
-//                ] }
-//        }
-//    }
+        onClicked: {
+            pageStack.push(Qt.resolvedUrl("qrc:/GraphChart.qml"), {
+                               "pageStack": pageStack
+                           })
+        }
+    }
 }

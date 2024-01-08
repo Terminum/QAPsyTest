@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls 2.15
+import QtQuick.Controls
 import QtQuick.Layouts
 
 Item {
@@ -79,7 +79,9 @@ Item {
 
             function onTestEnd() {
                 console.log("Test End")
-                pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"))
+                pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
+                                   "pageStack": pageStack
+                               })
             }
         }
 }

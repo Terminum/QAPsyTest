@@ -8,5 +8,6 @@
         <file>TestScreen.qml</file>
         <file>MainCustomBtn.qml</file>
         <file>LifeStyleCharts.qml</file>
+        <file>GraphChart.qml</file>
     </qresource>
 </RCC>
