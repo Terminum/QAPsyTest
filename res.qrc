@@ -5,5 +5,6 @@
         <file>Images/bgImg_firstScreen.jpg</file>
         <file>Images/logotype.svg</file>
         <file>ChooseThemeScreen.qml</file>
+        <file>TestScreen.qml</file>
     </qresource>
 </RCC>

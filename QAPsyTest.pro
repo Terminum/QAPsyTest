@@ -26,4 +26,5 @@ HEADERS += \
 DISTFILES += \
     ChooseThemeScreen.qml \
     FirstScreen.qml \
-    TestProject.qml
+    TestProject.qml \
+    TestScreen.qml

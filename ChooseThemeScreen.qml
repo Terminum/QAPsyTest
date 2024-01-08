@@ -10,6 +10,7 @@ Item {
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
     property bool itemIschecked: false
+    property StackView pageStack: StackView.view
 
     ListModel {
         id: _themeModel
@@ -178,7 +179,9 @@ Item {
                     if (itemIschecked === false) {
                         _messageDialog.open()
                     } else if (itemIschecked) {
-                        console.log("Yes")
+                        pageStack.push(Qt.resolvedUrl("qrc:/TestScreen.qml"), {
+                                           "pageStack": pageStack
+                                       })
                     }
                 }
             }

@@ -7,7 +7,7 @@ Item {
 
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
-    property var pageStack: null
+    property StackView pageStack: StackView.view
 
     Image {
         id: _imgBg
