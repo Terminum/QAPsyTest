@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Dialogs
 
 Item {
     id: _window
@@ -9,7 +8,6 @@ Item {
     property int blockCount: 5
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
-    property bool itemIschecked: false
     property StackView pageStack: StackView.view
 
     ListModel {
@@ -32,6 +30,26 @@ Item {
         }
         ListElement {
             themeName: "Тема 5"
+            themeImage: "source"
+        }
+        ListElement {
+            themeName: "Тема 6"
+            themeImage: "source"
+        }
+        ListElement {
+            themeName: "Тема 7"
+            themeImage: "source"
+        }
+        ListElement {
+            themeName: "Тема 8"
+            themeImage: "source"
+        }
+        ListElement {
+            themeName: "Тема 9"
+            themeImage: "source"
+        }
+        ListElement {
+            themeName: "Тема 10"
             themeImage: "source"
         }
     }
@@ -89,26 +107,13 @@ Item {
                     id: _repeater
                     model: _themeModel
 
-                    PaddedRectangle {
+                    Rectangle {
                         id: _themeModelItem
                         Layout.fillWidth: true
                         width: _mainLayout.width / 2
-                        height: _mainLayout.height / 4.5
-                        radius: _mainLayout.width * 0.06
+                        height: _mainLayout.height / 4
+                        radius: _mainLayout.width * 0.05
                         color: "lightblue"
-                        padding: parent.width * 0.015
-
-                        property bool checked: false
-
-                        PaddedRectangle {
-                            id: _themeModelItemBorder
-                            visible: checked ? true : false
-                            anchors.fill: parent
-                            border.width: 3
-                            border.color: secondaryColor
-                            color: "transparent"
-                            radius: parent.radius
-                        }
 
                         Image {
                             source: model.themeImage
@@ -129,49 +134,15 @@ Item {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                //console.log("Вы выбрали тему:", model.themeName)
-                                for (var i = 0; i < _repeater.count; i++) {
-                                    _repeater.itemAt(i).checked = false
-                                }
-                                checked = true
-                                setChecked()
+                                pageStack.push(Qt.resolvedUrl(
+                                                   "qrc:/TestScreen.qml"), {
+                                                   "pageStack": pageStack
+                                               })
                             }
                         }
                     }
                 }
             }
-
-            MainCustomBtn {
-                idBtn: _continueBtn
-                idBtnText: _continueBtnText
-                idBtnRect: _continueBtnRect
-                btnText: "Continue"
-
-                Layout.bottomMargin: parent.height * 0.03
-                Layout.alignment: Qt.AlignBottom
-
-                onClicked: {
-                    if (itemIschecked === false) {
-                        _messageDialog.open()
-                    } else if (itemIschecked) {
-                        pageStack.push(Qt.resolvedUrl("qrc:/TestScreen.qml"), {
-                                           "pageStack": pageStack
-                                       })
-                    }
-                }
-            }
         }
-    }
-
-    MessageDialog {
-        id: _messageDialog
-        text: "Please, choose the topic!"
-        modality: Qt.ApplicationModal
-        buttons: StandartButton.OK
-        onButtonClicked: close()
-    }
-
-    function setChecked() {
-        itemIschecked = true
     }
 }
