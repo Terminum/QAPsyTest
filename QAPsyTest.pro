@@ -24,6 +24,7 @@ HEADERS += \
     src/lsiclass.h
 
 DISTFILES += \
+    BackCustomBtn.qml \
     ChooseThemeScreen.qml \
     FirstScreen.qml \
     GraphChart.qml \

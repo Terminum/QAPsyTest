@@ -9,5 +9,6 @@
         <file>MainCustomBtn.qml</file>
         <file>LifeStyleCharts.qml</file>
         <file>GraphChart.qml</file>
+        <file>BackCustomBtn.qml</file>
     </qresource>
 </RCC>
