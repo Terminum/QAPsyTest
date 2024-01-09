@@ -3,33 +3,29 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 Button {
-    property var idBtn
-    property var idBtnText
-    property var idBtnRect
-    property string btnText: "DefaultText"
+    property string btnText: "<"
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
+    property color btnTextColor: "white"
 
     id: idBtn
     text: qsTr(btnText)
-    Layout.rightMargin: parent.width * 0.05
-    Layout.leftMargin: parent.width * 0.05
-    Layout.fillWidth: true
+
+    width: parent.width * 0.15
+    height: parent.width * 0.15
 
     contentItem: Text {
         id: idBtnText
         text: idBtn.text
-        color: "#ffffff"
+        color: btnTextColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
-        padding: idBtn.height * 0.08
-        font.pixelSize: 16
-        font.bold: true
+        font.pixelSize: parent.width * 0.45
     }
 
     background: Rectangle {
         id: idBtnRect
-        radius: parent.width / 2
+        radius: parent.width * 0.5
         color: accentColor
     }
 

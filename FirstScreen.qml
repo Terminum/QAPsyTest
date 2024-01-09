@@ -105,9 +105,7 @@ Item {
         }
 
         MainCustomBtn {
-            idBtn: _startBtn
-            idBtnText: _startBtnText
-            idBtnRect: _startBtnRect
+            id: _startBtn
             btnText: "Get started"
 
             onClicked: {
