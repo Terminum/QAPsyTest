@@ -7,6 +7,7 @@ import QtQuick.Layouts
 Item {
     id: _window
     visible: true
+    property StackView pageStack: StackView.view
 
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
@@ -79,6 +80,17 @@ Item {
         }
     }
 
+
+    Button {
+        text: "Tuta"
+
+        onClicked: {
+            pageStack.push(Qt.resolvedUrl("qrc:/GraphChart.qml"), {
+                               "pageStack": pageStack
+                           })
+        }
+    }
+
     RowLayout {
         id: _legendLayout
         Layout.fillWidth: true
@@ -110,29 +122,4 @@ Item {
                             event.accepted = true
                         }
                     }
-
-    // ChartView {
-    //     title: "Напряженность психологической защиты"
-    //     anchors.fill: parent
-    //     legend.alignment: Qt.AlignBottom
-    //     antialiasing: true
-
-    //     HorizontalBarSeries {
-    //         axisY: BarCategoryAxis {
-    //             categories: ["Вытеснение", "Регрессия", "Замещение", "Отрицание", "Проекция", "Компенсация", "Гиперкомпенсация", "Рационализация"]
-    //         }
-    //         BarSet {
-    //             label: "Name"
-    //             values: [2, // LifeStyle.repressionTension()
-    //                 2, // LifeStyle.regressusTension()
-    //                 3, // LifeStyle.substitutionTension()
-    //                 4, // LifeStyle.denialTension()
-    //                 5, // LifeStyle.projectioTension()
-    //                 6, // LifeStyle.compensationTension()
-    //                 7, // LifeStyle.hyperCompensationTension()
-    //                 8// LifeStyle.rationalisTension()
-    //             ]
-    //         }
-    //     }
-    // }
 }

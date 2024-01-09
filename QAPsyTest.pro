@@ -27,6 +27,7 @@ DISTFILES += \
     BackCustomBtn.qml \
     ChooseThemeScreen.qml \
     FirstScreen.qml \
+    GraphChart.qml \
     LifeStyleCharts.qml \
     MainCustomBtn.qml \
     TestProject.qml \

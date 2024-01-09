@@ -32,7 +32,8 @@ const QString LSIClass::getQuestion()
 void LSIClass::setAnswer(const int ans)
 {
     if(!m_testEnded) {
-        m_answers.insert(m_iter++,ans);
+//        m_answers.insert(m_iter++,ans);
+        m_answers.push_back(ans);
     }
 }
 
@@ -40,7 +41,8 @@ double LSIClass::overallTension()
 {
     if(!m_testEnded)
         return 0;
-    return (double)m_answers.keys(1).count() / (double)92;
+    return (double)m_answers.toList().count(1) / (double)92;
+//    return (double)m_answers.keys(1).count() / (double)92;
 }
 
 double LSIClass::regressusTension()
@@ -65,6 +67,7 @@ double LSIClass::regressusTension()
     res += m_answers[71];
     res += m_answers[74];
     res += m_answers[83];
+    qDebug() << res / (double)17;
     return res / (double)17;
 }
 
@@ -83,6 +86,7 @@ double LSIClass::substitutionTension()
     res += m_answers[57];
     res += m_answers[75];
     res += m_answers[88];
+    qDebug() << res / (double)10;
     return res / (double)10;
 }
 
@@ -102,6 +106,7 @@ double LSIClass::denialTension()
     res += m_answers[46];
     res += m_answers[62];
     res += m_answers[89];
+    qDebug() << res / (double)11;
     return res / (double)11;
 }
 
@@ -122,6 +127,7 @@ double LSIClass::projectioTension()
     res += m_answers[78];
     res += m_answers[81];
     res += m_answers[87];
+    qDebug() << res / (double)12;
     return res / (double)12;
 }
 
@@ -140,6 +146,7 @@ double LSIClass::compensationTension()
     res += m_answers[56];
     res += m_answers[82];
     res += m_answers[84];
+    qDebug() << res / (double)10;
     return res / (double)10;
 }
 
@@ -158,6 +165,7 @@ double LSIClass::hyperCompensationTension()
     res += m_answers[79];
     res += m_answers[80];
     res += m_answers[85];
+    qDebug() << res / (double)10;
     return res / (double)10;
 }
 
@@ -178,6 +186,7 @@ double LSIClass::rationalisTension()
     res += m_answers[59];
     res += m_answers[86];
     res += m_answers[90];
+    qDebug() << res / (double)12;
     return res / (double)12;
 }
 
@@ -196,5 +205,6 @@ double LSIClass::repressionTension()
     res += m_answers[72];
     res += m_answers[76];
     res += m_answers[91];
+    qDebug() << res / (double)10;
     return res / (double)10;
 }

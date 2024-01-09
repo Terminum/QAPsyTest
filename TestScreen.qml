@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls 2.15
+import QtQuick.Controls
 import QtQuick.Layouts
 
 Item {
@@ -102,11 +102,12 @@ Item {
     Connections {
         target: LifeStyle
 
-        function onTestEnd() {
-            console.log("Test End")
-            pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
-                               "pageStack": pageStack
-                           })
+            function onTestEnd() {
+                console.log("Test End")
+                pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
+                                   "pageStack": pageStack
+                               })
+            }
         }
     }
 }
