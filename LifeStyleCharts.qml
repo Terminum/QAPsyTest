@@ -52,15 +52,16 @@ Item {
 
     ColumnLayout {
         id: _headerLayout
-        Layout.alignment: Qt.AlignHCenter
         Layout.fillWidth: true
         width: _chart.width
 
         BackCustomBtn {
             id: _backBtn
-            Layout.alignment: Qt.AlignHCenter
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignRight
             Layout.topMargin: _chart.width * 0.2
-            Layout.bottomMargin: parent.height * 0.1
+            Layout.bottomMargin: parent.height * 0.2
+            anchors.right: parent.right
+            anchors.rightMargin: parent.width * 0.08
 
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"))

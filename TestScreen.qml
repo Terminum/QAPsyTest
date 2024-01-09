@@ -20,79 +20,85 @@ Item {
                         }
                     }
 
+    BackCustomBtn {
+        id: _backBtn
+        accentColor: "#ebebeb"
+        secondaryColor: "#d4d4d4"
+        btnTextColor: "gray"
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: parent.width * 0.1
+        anchors.rightMargin: parent.width * 0.06
+
+        onClicked: {
+            pageStack.pop()
+        }
+    }
+
     ColumnLayout {
         id: _mainLayout
         Layout.fillWidth: true
-        Layout.fillHeight: true
         width: parent.width
-        height: parent.height
-        Layout.alignment: Qt.AlignVCenter
-        anchors.fill: parent
+        height: parent.height / 1.5
 
-        anchors.left: parent.left
-        anchors.right: parent.right
-
-        anchors.leftMargin: parent.width * 0.06
-        anchors.rightMargin: parent.width * 0.06
-
-        BackCustomBtn {
-            id: _backBtn
-            accentColor: "#ebebeb"
-            secondaryColor: "#d4d4d4"
-            btnTextColor: "gray"
-
-            onClicked: {
-                pageStack.pop()
-            }
+        anchors {
+            left: parent.left
+            right: parent.right
+            leftMargin: parent.width * 0.06
+            rightMargin: parent.width * 0.06
         }
 
         Text {
             id: _qText
-            anchors.centerIn: parent
-            text: qsTr("Внимательно прочитайте приведенные ниже утверждения, описывающие чувства,
-поведение и реакции людей в определенных жизненных ситуациях, и если они
-имеют к Вам отношение, то ответьте утердительно.")
+            Layout.alignment: Qt.AlignHCenter
+            text: qsTr("Внимательно прочитайте приведенные ниже утверждения,
+описывающие чувства, поведение и реакции людей в определенных жизненных ситуациях,
+и если они имеют к Вам отношение, то ответьте утердительно.")
             color: "white"
             wrapMode: Text.WordWrap
             Layout.preferredWidth: parent.width
-            font.pixelSize: _window.width * 0.05
+            font.pixelSize: parent.width * 0.05
             Layout.fillWidth: true
+            anchors.bottom: _buttonsYENO.top
         }
 
-        Button {
-            id: _buttonYes
-            text: "Yes"
-            anchors.top: _qText.bottom
-            width: parent.width
-            padding: parent.width * 0.2
+        ColumnLayout {
+            id: _buttonsYENO
+            Layout.alignment: Qt.AlignBottom
 
-            onClicked: {
-                if (!_buttonNo.visible)
-                    _buttonNo.visible = true
-                _qText.text = LifeStyle.getQuestion()
-                LifeStyle.setAnswer(1)
-            }
-            Layout.alignment: Qt.AlignLeft
-            Layout.fillWidth: true
-        }
+            Button {
+                id: _buttonYes
+                text: "Yes"
+                width: parent.width
+                height: parent.width * 0.1
+                padding: parent.width * 0.2
 
-        Button {
-            id: _buttonNo
-            text: "No"
-            visible: false
-            anchors.top: _buttonYes.bottom
-            width: parent.width
-            padding: parent.width * 0.2
-
-            onClicked: {
-                _qText.text = LifeStyle.getQuestion()
-                LifeStyle.setAnswer(0)
+                onClicked: {
+                    if (!_buttonNo.visible)
+                        _buttonNo.visible = true
+                    _qText.text = LifeStyle.getQuestion()
+                    LifeStyle.setAnswer(1)
+                }
+                Layout.fillWidth: true
             }
 
-            Layout.alignment: Qt.AlignLeft
-            Layout.fillWidth: true
+            Button {
+                id: _buttonNo
+                text: "No"
+                visible: false
+                width: parent.width
+                height: parent.width * 0.1
+                padding: parent.width * 0.2
+
+                onClicked: {
+                    _qText.text = LifeStyle.getQuestion()
+                    LifeStyle.setAnswer(0)
+                }
+                Layout.fillWidth: true
+            }
         }
     }
+
     Connections {
         target: LifeStyle
 
