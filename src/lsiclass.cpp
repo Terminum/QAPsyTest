@@ -32,7 +32,8 @@ const QString LSIClass::getQuestion()
 void LSIClass::setAnswer(const int ans)
 {
     if(!m_testEnded) {
-        m_answers.insert(m_iter++,ans);
+//        m_answers.insert(m_iter++,ans);
+        m_answers.push_back(ans);
     }
 }
 
@@ -40,7 +41,8 @@ double LSIClass::overallTension()
 {
     if(!m_testEnded)
         return 0;
-    return (double)m_answers.keys(1).count() / (double)92;
+    return (double)m_answers.toList().count(1) / (double)92;
+//    return (double)m_answers.keys(1).count() / (double)92;
 }
 
 double LSIClass::regressusTension()

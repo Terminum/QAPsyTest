@@ -31,8 +31,9 @@ signals:
 private:
     QFile testQuestions;
     QTextStream *m_in;
-    QMap <int,int> m_answers;
-    int m_iter;
+    QVector<int> m_answers;
+//    QMap <int,int> m_answers;
+//    int m_iter;
     bool m_testEnded = false;
 
 };
