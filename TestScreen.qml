@@ -12,6 +12,14 @@ Item {
         color: "blue"
     }
 
+    focus: true
+    Keys.onPressed: event => {
+                        if (event.key === Qt.Key_Back) {
+                            pageStack.pop()
+                            event.accepted = true
+                        }
+                    }
+
     ColumnLayout {
         id: _mainLayout
         Layout.fillWidth: true
@@ -27,12 +35,23 @@ Item {
         anchors.leftMargin: parent.width * 0.06
         anchors.rightMargin: parent.width * 0.06
 
+        BackCustomBtn {
+            id: _backBtn
+            accentColor: "#ebebeb"
+            secondaryColor: "#d4d4d4"
+            btnTextColor: "gray"
+
+            onClicked: {
+                pageStack.pop()
+            }
+        }
+
         Text {
             id: _qText
             anchors.centerIn: parent
             text: qsTr("Внимательно прочитайте приведенные ниже утверждения, описывающие чувства,
-        поведение и реакции людей в определенных жизненных ситуациях, и если они
-        имеют к Вам отношение, то ответьте утердительно.")
+поведение и реакции людей в определенных жизненных ситуациях, и если они
+имеют к Вам отношение, то ответьте утердительно.")
             color: "white"
             wrapMode: Text.WordWrap
             Layout.preferredWidth: parent.width
@@ -48,7 +67,7 @@ Item {
             padding: parent.width * 0.2
 
             onClicked: {
-                if(!_buttonNo.visible)
+                if (!_buttonNo.visible)
                     _buttonNo.visible = true
                 _qText.text = LifeStyle.getQuestion()
                 LifeStyle.setAnswer(1)
@@ -75,11 +94,13 @@ Item {
         }
     }
     Connections {
-            target: LifeStyle
+        target: LifeStyle
 
-            function onTestEnd() {
-                console.log("Test End")
-                pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"))
-            }
+        function onTestEnd() {
+            console.log("Test End")
+            pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
+                               "pageStack": pageStack
+                           })
         }
+    }
 }

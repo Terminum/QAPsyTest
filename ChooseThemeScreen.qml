@@ -85,12 +85,13 @@ Item {
                 id: _title
                 Layout.preferredWidth: _window.width
                 Layout.alignment: Qt.AlignTop
+                Layout.topMargin: _window.height * 0.05
                 padding: _window.width * 0.05
+                topPadding: 0
                 text: "Which test do you want to take first?"
                 wrapMode: Text.Wrap
                 font.pixelSize: _window.width * 0.06
                 font.weight: 800
-                Layout.topMargin: _window.height * 0.02
             }
 
             GridLayout {

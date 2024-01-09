@@ -10,16 +10,13 @@ Item {
 
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
+    property StackView pageStack: StackView.view
 
     ChartView {
         id: _chart
-        width: _window.width
-        height: _window.height
-        title: "Общая напряженность всех защит (ОНЗ)"
-        titleColor: secondaryColor
-        titleFont: Qt.font({
-                               "bold": true
-                           })
+        width: parent.width
+        height: parent.height
+        //title: "Общая напряженность всех защит (ОНЗ)"
         legend.alignment: Qt.AlignBottom
         legend.visible: false
         antialiasing: true
@@ -41,6 +38,8 @@ Item {
 
                 labelPosition: PieSlice.LabelInsideHorizontal
                 labelColor: "white"
+                exploded: true
+                explodeDistanceFactor: 0.05
             }
 
             PieSlice {
@@ -48,6 +47,34 @@ Item {
                 labelVisible: false
                 value: 1 - LifeStyle.overallTension()
             }
+        }
+    }
+
+    ColumnLayout {
+        id: _headerLayout
+        Layout.alignment: Qt.AlignHCenter
+        Layout.fillWidth: true
+        width: _chart.width
+
+        BackCustomBtn {
+            id: _backBtn
+            Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin: _chart.width * 0.2
+            Layout.bottomMargin: parent.height * 0.1
+
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"))
+            }
+        }
+
+        Text {
+            id: _headerLayoutTitle
+            text: "Общая напряженность всех защит (ОНЗ)"
+            font.pixelSize: _chart.width * 0.04
+            font.bold: true
+            color: secondaryColor
+            Layout.alignment: Qt.AlignHCenter
+            wrapMode: Text.WordWrap
         }
     }
 
@@ -73,6 +100,15 @@ Item {
             text: "ОНЗ"
         }
     }
+
+    focus: true
+    Keys.onPressed: event => {
+                        if (event.key === Qt.Key_Back) {
+                            pageStack.push(Qt.resolvedUrl(
+                                               "qrc:/ChooseThemeScreen.qml"))
+                            event.accepted = true
+                        }
+                    }
 
     // ChartView {
     //     title: "Напряженность психологической защиты"
