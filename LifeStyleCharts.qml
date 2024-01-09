@@ -16,10 +16,20 @@ Item {
         anchors.fill: parent
         legend.alignment: Qt.AlignBottom
         antialiasing: true
+        animationOptions: ChartView.GridAxisAnimations
+        animationDuration: 3
 
         PieSeries {
             id: pieSeries
-            PieSlice { label: "ОНЗ"; value: LifeStyle.overallTension() }
+            PieSlice { label: "ОНЗ"; value: 0;
+                NumberAnimation on value {
+//                    target: object
+//                    property: "name"
+                    duration: 500
+//                    easing.type: Easing.InOutQuad
+                    from: 0
+                    to:LifeStyle.overallTension()
+                }}
             PieSlice { value: 1 - LifeStyle.overallTension()}
         }
 
