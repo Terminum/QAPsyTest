@@ -1,32 +1,27 @@
-import QtQuick 2.15
-import QtCharts 2.0
-import QtQuick.Window 2.15
-import QtQuick.Controls 2.15
+import QtQuick
+import QtCharts
+import QtQuick.Window
+import QtQuick.Controls
 import QtQuick.Layouts
 
 Item {
     id: _window
     visible: true
     property StackView pageStack: StackView.view
-
     property color accentColor: "#03524D"
     property color secondaryColor: "#1C6763"
-    property StackView pageStack: StackView.view
 
     ChartView {
         id: _chart
         width: parent.width
         height: parent.height
-        //title: "Общая напряженность всех защит (ОНЗ)"
+//        title: "Общая напряженность всех защит (ОНЗ)"
         legend.alignment: Qt.AlignBottom
         legend.visible: false
         antialiasing: true
         margins.top: parent.width * 0.2
-
-        animationOptions: {
-            animationDuration: 2
-            animationEasingCurve: ChartView.GridAxisAnimations
-        }
+        animationOptions: ChartView.GridAxisAnimations
+        animationDuration: 3
 
         PieSeries {
             id: _pieSeries
@@ -35,7 +30,11 @@ Item {
                 id: _firstSlice
                 labelVisible: true
                 label: (LifeStyle.overallTension() * 100).toFixed(2) + "%"
-                value: LifeStyle.overallTension()
+                NumberAnimation on value {
+                    duration: 500
+                    from: 0
+                    to:LifeStyle.overallTension()
+                }
 
                 labelPosition: PieSlice.LabelInsideHorizontal
                 labelColor: "white"

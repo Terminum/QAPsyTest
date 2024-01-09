@@ -102,12 +102,11 @@ Item {
     Connections {
         target: LifeStyle
 
-            function onTestEnd() {
-                console.log("Test End")
-                pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
-                                   "pageStack": pageStack
-                               })
-            }
+        function onTestEnd() {
+            console.log("Test End")
+            pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
+                               "pageStack": pageStack
+                           })
         }
     }
 }
