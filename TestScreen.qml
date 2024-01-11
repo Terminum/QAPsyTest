@@ -32,6 +32,7 @@ Item {
 
         onClicked: {
             pageStack.pop()
+            LifeStyle.resetTest()
         }
     }
 
