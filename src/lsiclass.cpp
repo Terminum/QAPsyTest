@@ -24,6 +24,7 @@ const QString LSIClass::getQuestion()
     } else {
         m_testEnded = true;
         emit testEnd();
+        resetTest();
         qDebug() << "Overall:" << overallTension();
         return "";
     }
@@ -32,9 +33,17 @@ const QString LSIClass::getQuestion()
 void LSIClass::setAnswer(const int ans)
 {
     if(!m_testEnded) {
-//        m_answers.insert(m_iter++,ans);
         m_answers.push_back(ans);
     }
+}
+
+void LSIClass::resetTest()
+{
+    m_answers.clear();
+    if(!m_in->seek(0))
+        qDebug() << "NONONON";
+    else
+        qDebug() << "DADADAD";
 }
 
 double LSIClass::overallTension()

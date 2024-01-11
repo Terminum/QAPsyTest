@@ -15,6 +15,7 @@ public:
 
     Q_INVOKABLE const QString getQuestion();
     Q_INVOKABLE void setAnswer(const int ans);
+    Q_INVOKABLE void resetTest();
     Q_INVOKABLE double overallTension(); // общая напряженность всех защит (ОНЗ)
     Q_INVOKABLE double repressionTension(); //Вытеснение
     Q_INVOKABLE double regressusTension(); //Регрессия
