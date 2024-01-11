@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 
 Item {
     id: _window
@@ -14,43 +15,19 @@ Item {
         id: _themeModel
         ListElement {
             themeName: "Тема 1"
-            themeImage: "source"
+            themeImage: "Images/test1_picture.jpg"
         }
         ListElement {
             themeName: "Тема 2"
-            themeImage: "source"
+            themeImage: "Images/test2_picture.jpg"
         }
         ListElement {
             themeName: "Тема 3"
-            themeImage: "source"
+            themeImage: "Images/test3_picture.jpg"
         }
         ListElement {
             themeName: "Тема 4"
-            themeImage: "source"
-        }
-        ListElement {
-            themeName: "Тема 5"
-            themeImage: "source"
-        }
-        ListElement {
-            themeName: "Тема 6"
-            themeImage: "source"
-        }
-        ListElement {
-            themeName: "Тема 7"
-            themeImage: "source"
-        }
-        ListElement {
-            themeName: "Тема 8"
-            themeImage: "source"
-        }
-        ListElement {
-            themeName: "Тема 9"
-            themeImage: "source"
-        }
-        ListElement {
-            themeName: "Тема 10"
-            themeImage: "source"
+            themeImage: "Images/test4_picture.jpg"
         }
     }
 
@@ -117,8 +94,29 @@ Item {
                         color: "lightblue"
 
                         Image {
+                            id: img
                             source: model.themeImage
-                            anchors.centerIn: parent
+                            anchors.fill: parent
+                            asynchronous: true
+
+                            property bool rounded: true
+                            property bool adapt: true
+
+                            layer.enabled: rounded
+                            layer.effect: OpacityMask {
+                                maskSource: Item {
+                                    width: img.width
+                                    height: img.height
+                                    Rectangle {
+                                        anchors.centerIn: parent
+                                        width: img.adapt ? img.width : Math.min(
+                                                               img.width,
+                                                               img.height)
+                                        height: img.adapt ? img.height : width
+                                        radius: _themeModelItem.radius
+                                    }
+                                }
+                            }
                         }
 
                         Text {

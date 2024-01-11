@@ -7,9 +7,21 @@ Item {
 
     property StackView pageStack: StackView.view
 
-    Rectangle {
+    Image {
+        id: _bgImg
         anchors.fill: parent
-        color: "blue"
+
+        source: "Images/testBg_picture.jpg"
+        asynchronous: true
+        cache: true
+
+        visible: _bgImg.status === Image.Ready
+        opacity: _bgImg.status === Image.Ready ? 1 : 0
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 500
+            }
+        }
     }
 
     focus: true
@@ -39,7 +51,8 @@ Item {
         id: _mainLayout
         Layout.fillWidth: true
         width: parent.width
-        height: parent.height / 1.5
+        y: _backBtn.height + (parent.height * 0.2)
+        height: parent.height * 0.4
 
         anchors {
             left: parent.left
@@ -59,7 +72,6 @@ Item {
             Layout.preferredWidth: parent.width
             font.pixelSize: parent.width * 0.05
             Layout.fillWidth: true
-            anchors.bottom: _buttonsYENO.top
         }
 
         ColumnLayout {
