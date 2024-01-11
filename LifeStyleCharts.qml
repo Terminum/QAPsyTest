@@ -15,13 +15,10 @@ Item {
         id: _chart
         width: parent.width
         height: parent.height
-//        title: "Общая напряженность всех защит (ОНЗ)"
         legend.alignment: Qt.AlignBottom
         legend.visible: false
         antialiasing: true
         margins.top: parent.width * 0.2
-        animationOptions: ChartView.GridAxisAnimations
-        animationDuration: 3
 
         PieSeries {
             id: _pieSeries
@@ -33,7 +30,7 @@ Item {
                 NumberAnimation on value {
                     duration: 500
                     from: 0
-                    to:LifeStyle.overallTension()
+                    to: LifeStyle.overallTension()
                 }
 
                 labelPosition: PieSlice.LabelInsideHorizontal
@@ -78,7 +75,6 @@ Item {
             wrapMode: Text.WordWrap
         }
     }
-
 
     Button {
         text: "Tuta"
