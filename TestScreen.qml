@@ -44,7 +44,6 @@ Item {
 
         onClicked: {
             pageStack.pop()
-            LifeStyle.resetTest()
         }
     }
 
@@ -87,8 +86,10 @@ Item {
                 padding: parent.width * 0.2
 
                 onClicked: {
-                    if (!_buttonNo.visible)
+                    if (!_buttonNo.visible) {
                         _buttonNo.visible = true
+                        LifeStyle.resetTest()
+                    }
                     _qText.text = LifeStyle.getQuestion()
                     LifeStyle.setAnswer(1)
                 }

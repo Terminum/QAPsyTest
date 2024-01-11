@@ -24,8 +24,7 @@ const QString LSIClass::getQuestion()
     } else {
         m_testEnded = true;
         emit testEnd();
-        resetTest();
-        qDebug() << "Overall:" << overallTension();
+        qDebug() << "Overall:" << overallTension() * 100;
         return "";
     }
 }
@@ -39,11 +38,13 @@ void LSIClass::setAnswer(const int ans)
 
 void LSIClass::resetTest()
 {
+    qDebug() << "Reset test";
+    m_testEnded = false;
     m_answers.clear();
     if(!m_in->seek(0))
-        qDebug() << "NONONON";
+        qDebug() << "Seek fail";
     else
-        qDebug() << "DADADAD";
+        qDebug() << "Seek Succes";
 }
 
 double LSIClass::overallTension()
@@ -51,7 +52,6 @@ double LSIClass::overallTension()
     if(!m_testEnded)
         return 0;
     return (double)m_answers.toList().count(1) / (double)92;
-//    return (double)m_answers.keys(1).count() / (double)92;
 }
 
 double LSIClass::regressusTension()

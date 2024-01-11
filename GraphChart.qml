@@ -20,15 +20,14 @@ Item {
                 categories: ["Вытеснение", "Регрессия", "Замещение", "Отрицание", "Проекция", "Компенсация", "Гиперкомпенсация", "Рационализация"]
             }
             BarSet {
-                // label: "Name"
-                values: [LifeStyle.repressionTension(
-                        ), LifeStyle.regressusTension(
-                        ), LifeStyle.substitutionTension(
-                        ), LifeStyle.denialTension(
-                        ), LifeStyle.projectioTension(
-                        ), LifeStyle.compensationTension(
-                        ), LifeStyle.hyperCompensationTension(
-                        ), LifeStyle.rationalisTension()]
+                values: [LifeStyle.repressionTension(),
+                        LifeStyle.regressusTension(),
+                        LifeStyle.substitutionTension(),
+                        LifeStyle.denialTension(),
+                        LifeStyle.projectioTension(),
+                        LifeStyle.compensationTension(),
+                        LifeStyle.hyperCompensationTension(),
+                        LifeStyle.rationalisTension()]
             }
         }
     }
