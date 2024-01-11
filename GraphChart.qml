@@ -3,7 +3,7 @@ import QtCharts
 import QtQuick.Window
 import QtQuick.Controls
 
-Window {
+Item {
     id: _window
     visible: true
     property StackView pageStack: StackView.view
@@ -11,28 +11,32 @@ Window {
     ChartView {
         title: "Напряженность психологической защиты"
         anchors.fill: parent
-        legend.alignment: Qt.AlignBottom
+        legend.visible: false
         antialiasing: true
+        animationOptions: ChartView.SeriesAnimations
 
         HorizontalBarSeries {
             axisY: BarCategoryAxis {
-                categories: ["Вытеснение",
-                    "Регрессия",
-                    "Замещение",
-                    "Отрицание",
-                    "Проекция",
-                    "Компенсация",
-                    "Гиперкомпенсация",
-                    "Рационализация"] }
-            BarSet { label: "Name"; values: [LifeStyle.repressionTension(),
-                    LifeStyle.regressusTension(),
-                    LifeStyle.substitutionTension(),
-                    LifeStyle.denialTension(),
-                    LifeStyle.projectioTension(),
-                    LifeStyle.compensationTension(),
-                    LifeStyle.hyperCompensationTension(),
-                    LifeStyle.rationalisTension(),
-                ] }
+                categories: ["Вытеснение", "Регрессия", "Замещение", "Отрицание", "Проекция", "Компенсация", "Гиперкомпенсация", "Рационализация"]
+            }
+            BarSet {
+                // label: "Name"
+                values: [LifeStyle.repressionTension(
+                        ), LifeStyle.regressusTension(
+                        ), LifeStyle.substitutionTension(
+                        ), LifeStyle.denialTension(
+                        ), LifeStyle.projectioTension(
+                        ), LifeStyle.compensationTension(
+                        ), LifeStyle.hyperCompensationTension(
+                        ), LifeStyle.rationalisTension()]
+            }
         }
     }
+
+    Keys.onPressed: event => {
+                        if (event.key === Qt.Key_Back) {
+                            pageStack.pop()
+                            event.accepted = true
+                        }
+                    }
 }
