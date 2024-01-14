@@ -4,7 +4,7 @@
 LSIClass::LSIClass(QObject *parent) :
     QObject(parent)
 {
-    testQuestions.setFileName(":/LifeStyleIndexKellermanKonte.txt");
+    testQuestions.setFileName(":/LSIIndexSrc/LifeStyleIndexKellermanKonte.txt");
     if (!testQuestions.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 

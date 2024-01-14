@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>LifeStyleIndexKellermanKonte.txt</file>
         <file>FirstScreen.qml</file>
         <file>Images/bgImg_firstScreen.jpg</file>
         <file>Images/logotype.svg</file>
@@ -15,5 +14,14 @@
         <file>Images/test3_picture.jpg</file>
         <file>Images/test4_picture.jpg</file>
         <file>Images/testBg_picture.jpg</file>
+        <file>LSIIndexSrc/Intellectualizacia.txt</file>
+        <file>LSIIndexSrc/Kompensacia.txt</file>
+        <file>LSIIndexSrc/LifeStyleIndexKellermanKonte.txt</file>
+        <file>LSIIndexSrc/Otricanie.txt</file>
+        <file>LSIIndexSrc/Proekcia.txt</file>
+        <file>LSIIndexSrc/ReactivnieObrazovania.txt</file>
+        <file>LSIIndexSrc/Regressia.txt</file>
+        <file>LSIIndexSrc/Vitesnenie.txt</file>
+        <file>LSIIndexSrc/Zameshenie.txt</file>
     </qresource>
 </RCC>

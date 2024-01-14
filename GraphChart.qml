@@ -17,9 +17,17 @@ Item {
 
         HorizontalBarSeries {
             axisY: BarCategoryAxis {
+                id: _barCategoryAxis
                 categories: ["Вытеснение", "Регрессия", "Замещение", "Отрицание", "Проекция", "Компенсация", "Гиперкомпенсация", "Рационализация"]
+
             }
+            axisX: ValuesAxis {
+                min: 0
+                max: 1
+            }
+
             BarSet {
+
                 values: [LifeStyle.repressionTension(),
                         LifeStyle.regressusTension(),
                         LifeStyle.substitutionTension(),
@@ -28,6 +36,9 @@ Item {
                         LifeStyle.compensationTension(),
                         LifeStyle.hyperCompensationTension(),
                         LifeStyle.rationalisTension()]
+                onClicked: {
+                   console.log(_barCategoryAxis.categories[index])
+                }
             }
         }
     }
