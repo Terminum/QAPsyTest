@@ -25,6 +25,7 @@ public:
     Q_INVOKABLE double compensationTension(); //Компенсация
     Q_INVOKABLE double hyperCompensationTension(); //Гиперкомпенсация
     Q_INVOKABLE double rationalisTension(); //Рационализация
+    Q_INVOKABLE QString getDescription(int index);
 
 signals:
     void testEnd();
