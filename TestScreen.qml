@@ -27,7 +27,9 @@ Item {
     focus: true
     Keys.onPressed: event => {
                         if (event.key === Qt.Key_Back) {
-                            pageStack.pop()
+                            pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), {
+                                               "pageStack": pageStack
+                                           }, StackView.PopTransition)
                             event.accepted = true
                         }
                     }
@@ -43,7 +45,9 @@ Item {
         anchors.rightMargin: parent.width * 0.06
 
         onClicked: {
-            pageStack.pop()
+            pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), {
+                               "pageStack": pageStack
+                           }, StackView.PopTransition)
         }
     }
 

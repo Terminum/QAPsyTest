@@ -15,5 +15,6 @@
         <file>Images/test3_picture.jpg</file>
         <file>Images/test4_picture.jpg</file>
         <file>Images/testBg_picture.jpg</file>
+        <file>DescriptionOfTest.qml</file>
     </qresource>
 </RCC>

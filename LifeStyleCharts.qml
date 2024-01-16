@@ -66,7 +66,7 @@ Item {
             anchors.rightMargin: parent.width * 0.08
 
             onClicked: {
-                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"))
+                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), StackView.PopTransition)
             }
         }
 
