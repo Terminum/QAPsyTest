@@ -19,7 +19,6 @@ Item {
             axisY: BarCategoryAxis {
                 id: _barCategoryAxis
                 categories: ["Вытеснение", "Регрессия", "Замещение", "Отрицание", "Проекция", "Компенсация", "Гиперкомпенсация", "Рационализация"]
-
             }
             axisX: ValuesAxis {
                 min: 0
@@ -42,50 +41,34 @@ Item {
                     switch (index) {
                     case 0:
                         _dialog.title = "Вытеснение"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     case 1:
                         _dialog.title = "Регрессия"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     case 2:
                         _dialog.title = "Замещение"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     case 3:
                         _dialog.title = "Отрицание"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     case 4:
                         _dialog.title = "Проекция"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     case 5:
                         _dialog.title = "Компенсация"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     case 6:
                         _dialog.title = "Гиперкомпенсация"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     case 7:
                         _dialog.title = "Рационализация"
-                        _textArea.text = LifeStyle.getDescription(index)
-//                        _textArea.text = :/LSIIndexSrc/Vitesnenie.txt
                         break
                     default:
                         _dialog.title = "Error"
 
                     }
-
-                   _dialog.visible = true
+                    _textArea.text = LifeStyle.getDescription(index)
+                    _dialog.visible = true
                 }
             }
         }
