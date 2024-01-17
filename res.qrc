@@ -23,5 +23,10 @@
         <file>LSIIndexSrc/Regressia.txt</file>
         <file>LSIIndexSrc/Vitesnenie.txt</file>
         <file>LSIIndexSrc/Zameshenie.txt</file>
+        <file>AyzenkSrc/Flegmatic.txt</file>
+        <file>AyzenkSrc/Holeric.txt</file>
+        <file>AyzenkSrc/Melanholic.txt</file>
+        <file>AyzenkSrc/QAyzenk.txt</file>
+        <file>AyzenkSrc/Sangvinic.txt</file>
     </qresource>
 </RCC>

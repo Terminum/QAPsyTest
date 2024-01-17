@@ -2,6 +2,7 @@ QT += charts qml quick
 
 SOURCES += \
         main.cpp \
+        src/ayzenkclass.cpp \
         src/lsiclass.cpp
 
 resources.files = main.qml
@@ -21,6 +22,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    src/ayzenkclass.h \
     src/lsiclass.h
 
 DISTFILES += \

@@ -1,5 +1,4 @@
 #include "lsiclass.h"
-#include <QDebug>
 
 LSIClass::LSIClass(QObject *parent) :
     QObject(parent)

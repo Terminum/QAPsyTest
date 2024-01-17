@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMap>
+#include <QDebug>
 
 class LSIClass : public QObject
 {
@@ -34,8 +35,6 @@ private:
     QFile testQuestions;
     QTextStream *m_in;
     QVector<int> m_answers;
-//    QMap <int,int> m_answers;
-//    int m_iter;
     bool m_testEnded = false;
 
 };
