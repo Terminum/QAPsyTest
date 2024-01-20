@@ -5,7 +5,7 @@ import QtQuick.Controls
 
 Item {
     id: _window
-    visible: true
+
     property StackView pageStack: StackView.view
 
     ChartView {
@@ -27,16 +27,16 @@ Item {
 
             BarSet {
 
-                values: [LifeStyle.repressionTension(),
-                        LifeStyle.regressusTension(),
-                        LifeStyle.substitutionTension(),
-                        LifeStyle.denialTension(),
-                        LifeStyle.projectioTension(),
-                        LifeStyle.compensationTension(),
-                        LifeStyle.hyperCompensationTension(),
-                        LifeStyle.rationalisTension()]
+                values: [LifeStyle.repressionTension(
+                        ), LifeStyle.regressusTension(
+                        ), LifeStyle.substitutionTension(
+                        ), LifeStyle.denialTension(
+                        ), LifeStyle.projectioTension(
+                        ), LifeStyle.compensationTension(
+                        ), LifeStyle.hyperCompensationTension(
+                        ), LifeStyle.rationalisTension()]
                 onClicked: {
-                   console.log(_barCategoryAxis.categories[index])
+                    console.log(_barCategoryAxis.categories[index])
 
                     switch (index) {
                     case 0:
@@ -65,7 +65,6 @@ Item {
                         break
                     default:
                         _dialog.title = "Error"
-
                     }
                     _textArea.text = LifeStyle.getDescription(index)
                     _dialog.visible = true
@@ -83,22 +82,31 @@ Item {
         modal: true
         visible: false
         standardButtons: Dialog.Ok
-//        onAccepted: console.log("Ok clicked")
         onAccepted: visible = false
 
-//        contentItem: {
-        ScrollView {
+        Flickable {
+            id: _scrollWrapper
             anchors.fill: parent
-            contentWidth: -1
+
+            clip: true
+            boundsMovement: Flickable.StopAtBounds
+            boundsBehavior: Flickable.DragAndOvershootBounds
+
+            contentHeight: _textArea.paintedHeight
+            contentWidth: parent.width
+
+            ScrollBar.vertical: ScrollBar {
+                anchors.right: parent.right
+                policy: ScrollBar.AlwaysOff
+            }
+
             TextArea {
                 id: _textArea
                 anchors.fill: parent
-//                contentWidth: parent.width
                 readOnly: true
                 wrapMode: TextEdit.WordWrap
             }
         }
-//        }
     }
 
     Keys.onPressed: event => {
