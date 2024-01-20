@@ -2,15 +2,20 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "src/lsiclass.h"
+#include "src/ayzenkclass.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    LSIClass life;
-
     QQmlApplicationEngine engine;
+
+    LSIClass life;
     engine.rootContext()->setContextProperty("LifeStyle", &life);
+
+    AyzenkClass ayzenk;
+    engine.rootContext()->setContextProperty("Ayzenk", &ayzenk);
+
     const QUrl url(u"qrc:/QAPsyTest/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
         &app, [url](QObject *obj, const QUrl &objUrl) {
