@@ -63,11 +63,6 @@ Item {
             Layout.topMargin: _chart.width * 0.1
             anchors.right: parent.right
             anchors.rightMargin: parent.width * 0.08
-
-            onClicked: {
-                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"),
-                               StackView.PopTransition)
-            }
         }
 
         MainCustomBtn {

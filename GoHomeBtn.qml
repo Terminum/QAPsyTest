@@ -20,6 +20,11 @@ Button {
         color: accentColor
     }
 
+    onClicked: {
+        pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"),
+                       StackView.PopTransition)
+    }
+
     onPressed: {
         _idBtnRect.color = secondaryColor
     }

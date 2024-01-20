@@ -40,12 +40,6 @@ Item {
             id: _goHomeBtn
             Layout.alignment: Qt.AlignRight | Qt.AlignTop
             Layout.topMargin: parent.width * 0.1
-
-            onClicked: {
-                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), {
-                                   "pageStack": pageStack
-                               }, StackView.PopTransition)
-            }
         }
 
         ColumnLayout {

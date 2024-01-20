@@ -28,10 +28,6 @@ Item {
 
             Layout.rightMargin: mainPadding
             Layout.topMargin: mainPadding
-
-            onClicked: {
-                pageStack.pop()
-            }
         }
 
         Text {
