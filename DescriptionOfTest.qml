@@ -21,8 +21,8 @@ Item {
         height: _window.height
         Layout.fillWidth: true
 
-        BackCustomBtn {
-            id: _goBackBtn
+        GoHomeBtn {
+            id: _goHomeBtn
 
             Layout.alignment: Qt.AlignRight | Qt.AlignTop
 

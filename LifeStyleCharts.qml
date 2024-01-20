@@ -14,13 +14,12 @@ Item {
     ChartView {
         id: _chart
         width: parent.width
-        height: parent.height - y*2
-        y: _backBtn.y + parent.height * 0.02
+        height: parent.height - y * 2
+        y: _goHomeBtn.y + parent.height * 0.04
         title: "Общая напряженность всех защит (ОНЗ)"
         titleColor: secondaryColor
         titleFont.bold: true
         titleFont.pixelSize: parent.width * 0.04
-        legend.alignment: Qt.AlignBottom
         legend.visible: false
         antialiasing: true
         margins.top: parent.width * 0.2
@@ -58,22 +57,23 @@ Item {
         height: parent.height
         width: _chart.width
 
-        BackCustomBtn {
-            id: _backBtn
+        GoHomeBtn {
+            id: _goHomeBtn
             Layout.alignment: Qt.AlignHCenter | Qt.AlignRight | Qt.AlignTop
-            Layout.topMargin: _chart.width * 0.2
+            Layout.topMargin: _chart.width * 0.1
             anchors.right: parent.right
             anchors.rightMargin: parent.width * 0.08
 
             onClicked: {
-                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), StackView.PopTransition)
+                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"),
+                               StackView.PopTransition)
             }
         }
 
         MainCustomBtn {
             text: "К следующему графику"
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-            Layout.bottomMargin: _chart.height * 0.1
+            Layout.bottomMargin: _chart.height * 0.05
             Layout.rightMargin: parent.width * 0.1
             Layout.leftMargin: parent.width * 0.1
 

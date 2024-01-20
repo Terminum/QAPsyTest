@@ -24,39 +24,10 @@ Item {
         }
     }
 
-    focus: true
-    Keys.onPressed: event => {
-                        if (event.key === Qt.Key_Back) {
-                            pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), {
-                                               "pageStack": pageStack
-                                           }, StackView.PopTransition)
-                            event.accepted = true
-                        }
-                    }
-
-    BackCustomBtn {
-        id: _backBtn
-        accentColor: "#ebebeb"
-        secondaryColor: "#d4d4d4"
-        btnTextColor: "gray"
-        anchors.right: parent.right
-        anchors.top: parent.top
-        anchors.topMargin: parent.width * 0.1
-        anchors.rightMargin: parent.width * 0.06
-
-        onClicked: {
-            pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), {
-                               "pageStack": pageStack
-                           }, StackView.PopTransition)
-        }
-    }
-
     ColumnLayout {
         id: _mainLayout
-        Layout.fillWidth: true
         width: parent.width
-        y: _backBtn.height + (parent.height * 0.2)
-        height: parent.height * 0.4
+        height: parent.height
 
         anchors {
             left: parent.left
@@ -65,54 +36,80 @@ Item {
             rightMargin: parent.width * 0.06
         }
 
-        Text {
-            id: _qText
-            Layout.alignment: Qt.AlignHCenter
-            text: qsTr("Внимательно прочитайте приведенные ниже утверждения,
-описывающие чувства, поведение и реакции людей в определенных жизненных ситуациях,
-и если они имеют к Вам отношение, то ответьте утердительно.")
-            color: "white"
-            wrapMode: Text.WordWrap
-            Layout.preferredWidth: parent.width
-            font.pixelSize: parent.width * 0.05
-            Layout.fillWidth: true
+        GoHomeBtn {
+            id: _goHomeBtn
+            Layout.alignment: Qt.AlignRight | Qt.AlignTop
+            Layout.topMargin: parent.width * 0.1
+
+            onClicked: {
+                pageStack.push(Qt.resolvedUrl("qrc:/ChooseThemeScreen.qml"), {
+                                   "pageStack": pageStack
+                               }, StackView.PopTransition)
+            }
         }
 
         ColumnLayout {
-            id: _buttonsYENO
+            id: _contentLayout
+            width: parent.width
             Layout.alignment: Qt.AlignBottom
+            Layout.topMargin: parent.height * 0.15
 
-            Button {
-                id: _buttonYes
-                text: "Yes"
-                width: parent.width
-                height: parent.width * 0.1
-                padding: parent.width * 0.2
-
-                onClicked: {
-                    if (!_buttonNo.visible) {
-                        _buttonNo.visible = true
-                        LifeStyle.resetTest()
-                    }
-                    _qText.text = LifeStyle.getQuestion()
-                    LifeStyle.setAnswer(1)
-                }
+            Text {
+                id: _qText
+                Layout.alignment: Qt.AlignHCenter
+                text: qsTr("Внимательно прочитайте приведенные ниже утверждения,
+описывающие чувства, поведение и реакции людей в определенных жизненных ситуациях,
+и если они имеют к Вам отношение, то ответьте утердительно.")
+                color: "white"
+                wrapMode: Text.WordWrap
+                Layout.preferredWidth: parent.width
+                font.pixelSize: parent.width * 0.05
                 Layout.fillWidth: true
+                Layout.fillHeight: true
             }
 
-            Button {
-                id: _buttonNo
-                text: "No"
-                visible: false
-                width: parent.width
-                height: parent.width * 0.1
-                padding: parent.width * 0.2
+            ColumnLayout {
+                id: _buttonsYENO
+                Layout.alignment: Qt.AlignBottom
+                Layout.bottomMargin: parent.width * 0.1
 
-                onClicked: {
-                    _qText.text = LifeStyle.getQuestion()
-                    LifeStyle.setAnswer(0)
+                MainCustomBtn {
+                    id: _buttonYes
+                    btnText: "Да"
+
+                    Layout.rightMargin: 0
+                    Layout.leftMargin: 0
+                    accentColor: "#dbdbdb"
+                    secondaryColor: "#e6e6e6"
+                    textColor: "#03524D"
+
+                    onClicked: {
+                        if (!_buttonNo.visible) {
+                            _buttonNo.visible = true
+                            LifeStyle.resetTest()
+                        }
+                        _qText.text = LifeStyle.getQuestion()
+                        LifeStyle.setAnswer(1)
+                    }
                 }
-                Layout.fillWidth: true
+
+                MainCustomBtn {
+                    id: _buttonNo
+
+                    btnText: "Нет"
+                    Layout.rightMargin: 0
+                    Layout.leftMargin: 0
+                    accentColor: "#dbdbdb"
+                    secondaryColor: "#e6e6e6"
+                    textColor: "#03524D"
+
+                    visible: false
+
+                    onClicked: {
+                        _qText.text = LifeStyle.getQuestion()
+                        LifeStyle.setAnswer(0)
+                    }
+                }
             }
         }
     }
@@ -127,4 +124,14 @@ Item {
                            })
         }
     }
+
+    Keys.onPressed: event => {
+                        if (event.key === Qt.Key_Back) {
+                            pageStack.push(Qt.resolvedUrl(
+                                               "qrc:/ChooseThemeScreen.qml"), {
+                                               "pageStack": pageStack
+                                           }, StackView.PopTransition)
+                            event.accepted = true
+                        }
+                    }
 }
