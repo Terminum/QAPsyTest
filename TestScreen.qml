@@ -121,10 +121,7 @@ Item {
 
     Keys.onPressed: event => {
                         if (event.key === Qt.Key_Back) {
-                            pageStack.push(Qt.resolvedUrl(
-                                               "qrc:/ChooseThemeScreen.qml"), {
-                                               "pageStack": pageStack
-                                           }, StackView.PopTransition)
+                            pageStack.pop()
                             event.accepted = true
                         }
                     }
