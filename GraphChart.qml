@@ -11,75 +11,82 @@ Item {
 
     ColumnLayout {
         id: _mainLayout
-        anchors.fill: parent\
+        anchors.fill: parent
 
-  ChartView {
-      id: _secondChart
-      title: "Напряженность психологической защиты"
-      width: parent.width
-      Layout.fillHeight: true
-      Layout.alignment: Qt.AlignBottom
-      legend.visible: false
-      antialiasing: true
-      animationOptions: ChartView.SeriesAnimations
-            
-        HorizontalBarSeries {
-            axisY: BarCategoryAxis {
-                id: _barCategoryAxis
-                categories: ["Вытеснение", "Регрессия", "Замещение", "Отрицание", "Проекция", "Компенсация", "Гиперкомпенсация", "Рационализация"]
-            }
-            axisX: ValuesAxis {
-                min: 0
-                max: 1
-            }
+        GoHomeBtn {
+            id: _goHomeBtn
+            Layout.alignment: Qt.AlignRight | Qt.AlignTop
+            Layout.topMargin: parent.width * 0.08
+            Layout.rightMargin: parent.width * 0.05
+        }
 
-            BarSet {
+        ChartView {
+            id: _secondChart
+            title: "Напряженность психологической защиты"
+            width: parent.width
+            Layout.fillHeight: true
+            Layout.alignment: Qt.AlignBottom
+            legend.visible: false
+            antialiasing: true
+            animationOptions: ChartView.SeriesAnimations
 
-                values: [LifeStyle.repressionTension(
-                        ), LifeStyle.regressusTension(
-                        ), LifeStyle.substitutionTension(
-                        ), LifeStyle.denialTension(
-                        ), LifeStyle.projectioTension(
-                        ), LifeStyle.compensationTension(
-                        ), LifeStyle.hyperCompensationTension(
-                        ), LifeStyle.rationalisTension()]
-                onClicked: {
-                    console.log(_barCategoryAxis.categories[index])
+            HorizontalBarSeries {
+                axisY: BarCategoryAxis {
+                    id: _barCategoryAxis
+                    categories: ["Вытеснение", "Регрессия", "Замещение", "Отрицание", "Проекция", "Компенсация", "Гиперкомпенсация", "Рационализация"]
+                }
+                axisX: ValuesAxis {
+                    min: 0
+                    max: 1
+                }
 
-                    switch (index) {
-                    case 0:
-                        _dialog.title = "Вытеснение"
-                        break
-                    case 1:
-                        _dialog.title = "Регрессия"
-                        break
-                    case 2:
-                        _dialog.title = "Замещение"
-                        break
-                    case 3:
-                        _dialog.title = "Отрицание"
-                        break
-                    case 4:
-                        _dialog.title = "Проекция"
-                        break
-                    case 5:
-                        _dialog.title = "Компенсация"
-                        break
-                    case 6:
-                        _dialog.title = "Гиперкомпенсация"
-                        break
-                    case 7:
-                        _dialog.title = "Рационализация"
-                        break
-                    default:
-                        _dialog.title = "Error"
+                BarSet {
+
+                    values: [LifeStyle.repressionTension(
+                            ), LifeStyle.regressusTension(
+                            ), LifeStyle.substitutionTension(
+                            ), LifeStyle.denialTension(
+                            ), LifeStyle.projectioTension(
+                            ), LifeStyle.compensationTension(
+                            ), LifeStyle.hyperCompensationTension(
+                            ), LifeStyle.rationalisTension()]
+                    onClicked: {
+                        console.log(_barCategoryAxis.categories[index])
+
+                        switch (index) {
+                        case 0:
+                            _dialog.title = "Вытеснение"
+                            break
+                        case 1:
+                            _dialog.title = "Регрессия"
+                            break
+                        case 2:
+                            _dialog.title = "Замещение"
+                            break
+                        case 3:
+                            _dialog.title = "Отрицание"
+                            break
+                        case 4:
+                            _dialog.title = "Проекция"
+                            break
+                        case 5:
+                            _dialog.title = "Компенсация"
+                            break
+                        case 6:
+                            _dialog.title = "Гиперкомпенсация"
+                            break
+                        case 7:
+                            _dialog.title = "Рационализация"
+                            break
+                        default:
+                            _dialog.title = "Error"
+                        }
+                        _textArea.text = LifeStyle.getDescription(index)
+                        _dialog.visible = true
                     }
-                    _textArea.text = LifeStyle.getDescription(index)
-                    _dialog.visible = true
                 }
             }
         }
-    }
     }
 
     Dialog {
@@ -114,13 +121,6 @@ Item {
                 anchors.fill: parent
                 readOnly: true
                 wrapMode: TextEdit.WordWrap
-                
-        GoHomeBtn {
-            id: _goHomeBtn
-            Layout.alignment: Qt.AlignRight | Qt.AlignTop
-            Layout.topMargin: parent.width * 0.08
-            Layout.rightMargin: parent.width * 0.05
-        }
             }
         }
     }
