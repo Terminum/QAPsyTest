@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QMap>
+#include <QDebug>
 
 class LSIClass : public QObject
 {
@@ -25,6 +26,7 @@ public:
     Q_INVOKABLE double compensationTension(); //Компенсация
     Q_INVOKABLE double hyperCompensationTension(); //Гиперкомпенсация
     Q_INVOKABLE double rationalisTension(); //Рационализация
+    Q_INVOKABLE QString getDescription(int index);
 
 signals:
     void testEnd();
@@ -33,8 +35,6 @@ private:
     QFile testQuestions;
     QTextStream *m_in;
     QVector<int> m_answers;
-//    QMap <int,int> m_answers;
-//    int m_iter;
     bool m_testEnded = false;
 
 };

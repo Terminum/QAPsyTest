@@ -1,10 +1,9 @@
 #include "lsiclass.h"
-#include <QDebug>
 
 LSIClass::LSIClass(QObject *parent) :
     QObject(parent)
 {
-    testQuestions.setFileName(":/LifeStyleIndexKellermanKonte.txt");
+    testQuestions.setFileName(":/LSIIndexSrc/LifeStyleIndexKellermanKonte.txt");
     if (!testQuestions.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
@@ -197,6 +196,48 @@ double LSIClass::rationalisTension()
     res += m_answers[90];
     qDebug() << res / (double)12;
     return res / (double)12;
+}
+
+QString LSIClass::getDescription(int index)
+{
+    QString desc;
+    QFile descFile;
+    QByteArray resArr;
+    switch (index) {
+    case 0:
+        descFile.setFileName(":/LSIIndexSrc/Vitesnenie.txt");
+        break;
+    case 1:
+        descFile.setFileName(":/LSIIndexSrc/Regressia.txt");
+        break;
+    case 2:
+        descFile.setFileName(":/LSIIndexSrc/Zameshenie.txt");
+        break;
+    case 3:
+        descFile.setFileName(":/LSIIndexSrc/Otricanie.txt");
+        break;
+    case 4:
+        descFile.setFileName(":/LSIIndexSrc/Proekcia.txt");
+        break;
+    case 5:
+        descFile.setFileName(":/LSIIndexSrc/Kompensacia.txt");
+        break;
+    case 6:
+        descFile.setFileName(":/LSIIndexSrc/ReactivnieObrazovania.txt");
+        break;
+    case 7:
+        descFile.setFileName(":/LSIIndexSrc/Intellectualizacia.txt");
+        break;
+    default:
+        return "";
+    }
+
+    if (!descFile.open(QIODevice::ReadOnly))
+        return "";
+    resArr = descFile.readAll();
+    descFile.close();
+    return QString(resArr);
+
 }
 
 double LSIClass::repressionTension()
