@@ -134,7 +134,7 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 pageStack.push(Qt.resolvedUrl(
-                                                   "qrc:/TestScreen.qml"), {
+                                                   "qrc:/DescriptionOfTest.qml"), {
                                                    "pageStack": pageStack
                                                })
                             }

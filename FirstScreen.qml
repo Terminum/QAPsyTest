@@ -106,6 +106,8 @@ Item {
 
         MainCustomBtn {
             id: _startBtn
+            Layout.rightMargin: parent.width * 0.06
+            Layout.leftMargin: parent.width * 0.06
             btnText: "Get started"
 
             onClicked: {
