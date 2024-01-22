@@ -1,7 +1,6 @@
 #include "lsiclass.h"
 
-LSIClass::LSIClass(QObject *parent) :
-    QObject(parent)
+LSIClass::LSIClass()
 {
     testQuestions.setFileName(":/LSIIndexSrc/LifeStyleIndexKellermanKonte.txt");
     if (!testQuestions.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -16,46 +15,46 @@ LSIClass::~LSIClass()
     delete m_in;
 }
 
-const QString LSIClass::getQuestion()
-{
-    if (!m_in->atEnd()) {
-        return m_in->readLine();
-    } else {
-        m_testEnded = true;
-        emit testEnd();
-        qDebug() << "Overall:" << overallTension() * 100;
-        return "";
-    }
-}
+//const QString LSIClass::getQuestion()
+//{
+//    if (!m_in->atEnd()) {
+//        return m_in->readLine();
+//    } else {
+//        m_testEnded = true;
+//        emit testEnd();
+//        qDebug() << "Overall:" << overallTension() * 100;
+//        return "";
+//    }
+//}
 
-void LSIClass::setAnswer(const int ans)
-{
-    if(!m_testEnded) {
-        m_answers.push_back(ans);
-    }
-}
+//void LSIClass::setAnswer(const int ans)
+//{
+//    if(!m_testEnded) {
+//        m_answers.push_back(ans);
+//    }
+//}
 
-void LSIClass::resetTest()
-{
-    qDebug() << "Reset test";
-    m_testEnded = false;
-    m_answers.clear();
-    if(!m_in->seek(0))
-        qDebug() << "Seek fail";
-    else
-        qDebug() << "Seek Succes";
-}
+//void LSIClass::resetTest()
+//{
+//    qDebug() << "Reset test";
+//    m_testEnded = false;
+//    m_answers.clear();
+//    if(!m_in->seek(0))
+//        qDebug() << "Seek fail";
+//    else
+//        qDebug() << "Seek Succes";
+//}
 
 double LSIClass::overallTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
     return (double)m_answers.toList().count(1) / (double)92;
 }
 
 double LSIClass::regressusTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[1];
@@ -81,7 +80,7 @@ double LSIClass::regressusTension()
 
 double LSIClass::substitutionTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[7];
@@ -100,7 +99,7 @@ double LSIClass::substitutionTension()
 
 double LSIClass::denialTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[0];
@@ -120,7 +119,7 @@ double LSIClass::denialTension()
 
 double LSIClass::projectioTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[11];
@@ -141,7 +140,7 @@ double LSIClass::projectioTension()
 
 double LSIClass::compensationTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[2];
@@ -160,7 +159,7 @@ double LSIClass::compensationTension()
 
 double LSIClass::hyperCompensationTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[16];
@@ -179,7 +178,7 @@ double LSIClass::hyperCompensationTension()
 
 double LSIClass::rationalisTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[3];
@@ -242,7 +241,7 @@ QString LSIClass::getDescription(int index)
 
 double LSIClass::repressionTension()
 {
-    if(!m_testEnded)
+    if(!testEnded())
         return 0;
 
     double res = m_answers[5];

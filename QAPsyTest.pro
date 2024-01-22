@@ -3,6 +3,7 @@ QT += charts qml quick
 SOURCES += \
         main.cpp \
         src/ayzenkclass.cpp \
+        src/basetestclass.cpp \
         src/lsiclass.cpp
 
 resources.files = main.qml
@@ -23,6 +24,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     src/ayzenkclass.h \
+    src/basetestclass.h \
     src/lsiclass.h
 
 DISTFILES += \
