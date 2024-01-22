@@ -26,9 +26,10 @@ HEADERS += \
     src/lsiclass.h
 
 DISTFILES += \
-    BackCustomBtn.qml \
     ChooseThemeScreen.qml \
+    DescriptionOfTest.qml \
     FirstScreen.qml \
+    GoHomeBtn.qml \
     GraphChart.qml \
     LifeStyleCharts.qml \
     MainCustomBtn.qml \

@@ -8,7 +8,6 @@
         <file>MainCustomBtn.qml</file>
         <file>LifeStyleCharts.qml</file>
         <file>GraphChart.qml</file>
-        <file>BackCustomBtn.qml</file>
         <file>Images/test1_picture.jpg</file>
         <file>Images/test2_picture.jpg</file>
         <file>Images/test3_picture.jpg</file>
@@ -28,5 +27,8 @@
         <file>AyzenkSrc/Melanholic.txt</file>
         <file>AyzenkSrc/QAyzenk.txt</file>
         <file>AyzenkSrc/Sangvinic.txt</file>
+        <file>DescriptionOfTest.qml</file>
+        <file>Images/homeIcon.svg</file>
+        <file>GoHomeBtn.qml</file>
     </qresource>
 </RCC>
