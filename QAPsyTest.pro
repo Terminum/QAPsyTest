@@ -2,9 +2,7 @@ QT += charts qml quick
 
 SOURCES += \
         main.cpp \
-        src/ayzenkclass.cpp \
-        src/basetestclass.cpp \
-        src/lsiclass.cpp
+        src/*.cpp
 
 resources.files = main.qml
 resources.prefix = /$${TARGET}
