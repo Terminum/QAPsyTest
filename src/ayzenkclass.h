@@ -1,16 +1,13 @@
 #ifndef AYZENKCLASS_H
 #define AYZENKCLASS_H
 
-#include <QObject>
-#include <QFile>
-#include <QTextStream>
-#include <QDebug>
+#include "basetestclass.h"
 
-class AyzenkClass : public QObject
+class AyzenkClass : public BaseTestClass
 {
     Q_OBJECT
 public:
-    AyzenkClass(QObject *parent = nullptr);
+    AyzenkClass();
     ~AyzenkClass();
 
     Q_INVOKABLE const QString getQuestion();
@@ -19,10 +16,6 @@ public:
     Q_INVOKABLE int extIntroversia();
     Q_INVOKABLE int neyrotizm();
     Q_INVOKABLE bool lieCheck();
-
-
-signals:
-    void testEnd();
 
 private:
     QFile testQuestions;

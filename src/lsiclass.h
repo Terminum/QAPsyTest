@@ -1,23 +1,18 @@
 #ifndef LSICLASS_H
 #define LSICLASS_H
 
-#include <QObject>
-#include <QFile>
-#include <QTextStream>
-#include <QMap>
-#include <QDebug>
 #include "basetestclass.h"
 
-class LSIClass : /*public QObject*/ public BaseTestClass
-{
-//    Q_OBJECT
+class LSIClass : public BaseTestClass {
+    Q_OBJECT
+
 public:
     LSIClass();
     ~LSIClass();
 
-//    Q_INVOKABLE const QString getQuestion();
-//    Q_INVOKABLE void setAnswer(const int ans);
-//    Q_INVOKABLE void resetTest();
+    Q_INVOKABLE const QString getQuestion();
+    Q_INVOKABLE void setAnswer(const int ans);
+    Q_INVOKABLE void resetTest();
     Q_INVOKABLE double overallTension(); // общая напряженность всех защит (ОНЗ)
     Q_INVOKABLE double repressionTension(); //Вытеснение
     Q_INVOKABLE double regressusTension(); //Регрессия
@@ -29,15 +24,10 @@ public:
     Q_INVOKABLE double rationalisTension(); //Рационализация
     Q_INVOKABLE QString getDescription(int index);
 
-//signals:
-//    void testEnd();
-
 private:
     QFile testQuestions;
     QTextStream *m_in;
     QVector<int> m_answers;
-//    bool m_testEnded = false;
-
 };
 
 #endif // LSICLASS_H

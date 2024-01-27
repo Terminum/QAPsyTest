@@ -1,7 +1,6 @@
 #include "ayzenkclass.h"
 
-AyzenkClass::AyzenkClass(QObject *parent) :
-    QObject(parent)
+AyzenkClass::AyzenkClass()
 {
     testQuestions.setFileName(":/AyzenkSrc/QAyzenk.txt");
     if (!testQuestions.open(QIODevice::ReadOnly | QIODevice::Text))

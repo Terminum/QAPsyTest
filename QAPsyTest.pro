@@ -2,7 +2,10 @@ QT += charts qml quick
 
 SOURCES += \
         main.cpp \
-        src/*.cpp
+        src/ayzenkclass.cpp \
+        src/basetestclass.cpp \
+        src/lsiclass.cpp \
+        src/optpesreal.cpp
 
 resources.files = main.qml
 resources.prefix = /$${TARGET}
@@ -23,7 +26,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     src/ayzenkclass.h \
     src/basetestclass.h \
-    src/lsiclass.h
+    src/lsiclass.h \
+    src/optpesreal.h
 
 DISTFILES += \
     ChooseThemeScreen.qml \
