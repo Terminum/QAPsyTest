@@ -20,7 +20,6 @@ const QString OptPesReal::getQuestion()
     if (!m_in->atEnd()) {
         return m_in->readLine();
     } else {
-        m_testEnded = true;
         emit testEnd();
         return "";
     }

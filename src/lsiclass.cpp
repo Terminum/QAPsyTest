@@ -48,7 +48,6 @@ double LSIClass::overallTension()
 
 double LSIClass::regressusTension()
 {
-
     double res = m_answers[1];
     res += m_answers[4];
     res += m_answers[8];
@@ -72,7 +71,6 @@ double LSIClass::regressusTension()
 
 double LSIClass::substitutionTension()
 {
-
     double res = m_answers[7];
     res += m_answers[9];
     res += m_answers[18];
@@ -89,7 +87,6 @@ double LSIClass::substitutionTension()
 
 double LSIClass::denialTension()
 {
-
     double res = m_answers[0];
     res += m_answers[19];
     res += m_answers[22];
@@ -107,7 +104,6 @@ double LSIClass::denialTension()
 
 double LSIClass::projectioTension()
 {
-
     double res = m_answers[11];
     res += m_answers[21];
     res += m_answers[27];
@@ -126,7 +122,6 @@ double LSIClass::projectioTension()
 
 double LSIClass::compensationTension()
 {
-
     double res = m_answers[2];
     res += m_answers[14];
     res += m_answers[15];
@@ -143,7 +138,6 @@ double LSIClass::compensationTension()
 
 double LSIClass::hyperCompensationTension()
 {
-
     double res = m_answers[16];
     res += m_answers[52];
     res += m_answers[60];
@@ -160,7 +154,6 @@ double LSIClass::hyperCompensationTension()
 
 double LSIClass::rationalisTension()
 {
-
     double res = m_answers[3];
     res += m_answers[6];
     res += m_answers[13];
@@ -221,7 +214,6 @@ QString LSIClass::getDescription(int index)
 
 double LSIClass::repressionTension()
 {
-
     double res = m_answers[5];
     res += m_answers[10];
     res += m_answers[30];

@@ -21,7 +21,6 @@ private:
     QFile testQuestions;
     QTextStream *m_in;
     QVector<int> m_answers;
-    bool m_testEnded = false;
 };
 
 #endif // AYZENKCLASS_H
