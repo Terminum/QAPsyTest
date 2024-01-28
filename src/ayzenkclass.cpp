@@ -21,6 +21,7 @@ const QString AyzenkClass::getQuestion()
         return m_in->readLine();
     } else {
         emit testEnd();
+        qDebug() << lieCheck() << neyrotizm() << extIntroversia();
         return "";
     }
 }

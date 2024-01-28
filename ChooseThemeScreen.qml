@@ -11,28 +11,25 @@ Item {
     property color secondaryColor: "#1C6763"
     property StackView pageStack: StackView.view
 
-    ListModel {
-        id: _themeModel
-        ListElement {
-            themeName: "Life Style Index"
-            objectName: "Life Style Index"
-            themeImage: "Images/test1_picture.jpg"
-        }
-        ListElement {
-            themeName: "Test Ayzenk"
-            objectName: "Test Ayzenk"
-            themeImage: "Images/test2_picture.jpg"
-        }
-        ListElement {
-            themeName: "Optimist Pessimist"
-            objectName: "Optimist Pessimist"
-            themeImage: "Images/test3_picture.jpg"
-        }
-        ListElement {
-            themeName: "Тема 4"
-            themeImage: "Images/test4_picture.jpg"
-        }
-    }
+//    ListModel {
+//        id: _themeModel
+//        ListElement {
+//            themeName: "Life Style Index"
+//            themeImage: "Images/test1_picture.jpg"
+//        }
+//        ListElement {
+//            themeName: "Test Ayzenk"
+//            themeImage: "Images/test2_picture.jpg"
+//        }
+//        ListElement {
+//            themeName: "Optimist Pessimist"
+//            themeImage: "Images/test3_picture.jpg"
+//        }
+//        ListElement {
+//            themeName: "Тема 4"
+//            themeImage: "Images/test4_picture.jpg"
+//        }
+//    }
 
     Rectangle {
         id: _background
@@ -84,66 +81,175 @@ Item {
                 rowSpacing: _window.width * 0.05
                 Layout.bottomMargin: parent.height * 0.02
 
-                Repeater {
-                    id: _repeater
-                    model: _themeModel
+                Rectangle {
+                    id: _LSIItem
+                    Layout.fillWidth: true
+                    width: _mainLayout.width / 2
+                    height: _mainLayout.height / 4
+                    radius: _mainLayout.width * 0.05
+                    color: "lightblue"
 
-                    Rectangle {
-                        id: _themeModelItem
-                        Layout.fillWidth: true
-                        width: _mainLayout.width / 2
-                        height: _mainLayout.height / 4
-                        radius: _mainLayout.width * 0.05
-                        color: "lightblue"
+                    Image {
+                        id: _LSIImg
+                        source: "Images/test1_picture.jpg"
+                        anchors.fill: parent
+                        asynchronous: true
 
-                        Image {
-                            id: img
-                            source: model.themeImage
-                            anchors.fill: parent
-                            asynchronous: true
+                        property bool rounded: true
+                        property bool adapt: true
 
-                            property bool rounded: true
-                            property bool adapt: true
-
-                            layer.enabled: rounded
-                            layer.effect: OpacityMask {
-                                maskSource: Item {
-                                    width: img.width
-                                    height: img.height
-                                    Rectangle {
-                                        anchors.centerIn: parent
-                                        width: img.adapt ? img.width : Math.min(
-                                                               img.width,
-                                                               img.height)
-                                        height: img.adapt ? img.height : width
-                                        radius: _themeModelItem.radius
-                                    }
+                        layer.enabled: rounded
+                        layer.effect: OpacityMask {
+                            maskSource: Item {
+                                width: _LSIImg.width
+                                height: _LSIImg.height
+                                Rectangle {
+                                    anchors.centerIn: parent
+                                    width: _LSIImg.adapt ? _LSIImg.width : Math.min(
+                                                           _LSIImg.width,
+                                                           _LSIImg.height)
+                                    height: _LSIImg.adapt ? _LSIImg.height : width
+                                    radius: _LSIItem.radius
                                 }
                             }
                         }
+                    }
 
-                        Text {
-                            id: _themeModelItemText
-                            text: model.themeName
-                            anchors {
-                                horizontalCenter: parent.horizontalCenter
-                                bottom: parent.bottom
-                                bottomMargin: parent.height * 0.1
-                            }
-                            font.pixelSize: parent.width * 0.1
+                    Text {
+                        id: _LSIText
+                        text: "Life Style Index"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            bottom: parent.bottom
+                            bottomMargin: parent.height * 0.1
                         }
+                        font.pixelSize: parent.width * 0.1
+                    }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                pageStack.push(Qt.resolvedUrl(
-                                                   "qrc:/DescriptionOfTest.qml"), {
-                                                   "pageStack": pageStack
-                                               })
-                            }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push(Qt.resolvedUrl(
+                                               "qrc:/DescriptionOfTest.qml"), {
+                                               "pageStack": pageStack
+                                           })
                         }
                     }
                 }
+
+                /////////////////////////////////////////////////////////////////////
+                Rectangle {
+                    id: _AyzenkItem
+                    Layout.fillWidth: true
+                    width: _mainLayout.width / 2
+                    height: _mainLayout.height / 4
+                    radius: _mainLayout.width * 0.05
+                    color: "lightblue"
+
+                    Image {
+                        id: _AyzenkImg
+                        source: "Images/test2_picture.jpg"
+                        anchors.fill: parent
+                        asynchronous: true
+
+                        property bool rounded: true
+                        property bool adapt: true
+
+                        layer.enabled: rounded
+                        layer.effect: OpacityMask {
+                            maskSource: Item {
+                                width: _AyzenkImg.width
+                                height: _AyzenkImg.height
+                                Rectangle {
+                                    anchors.centerIn: parent
+                                    width: _AyzenkImg.adapt ? _AyzenkImg.width : Math.min(
+                                                           _AyzenkImg.width,
+                                                           _AyzenkImg.height)
+                                    height: _AyzenkImg.adapt ? _AyzenkImg.height : width
+                                    radius: _AyzenkItem.radius
+                                }
+                            }
+                        }
+                    }
+
+                    Text {
+                        id: _AyzenkText
+                        text: "Test Ayzenk"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            bottom: parent.bottom
+                            bottomMargin: parent.height * 0.1
+                        }
+                        font.pixelSize: parent.width * 0.1
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push(Qt.resolvedUrl(
+                                               "qrc:/qml/Ayzenk/AyzenkTest.qml"), {
+                                               "pageStack": pageStack
+                                           })
+                        }
+                    }
+                }
+                ////////////////////////////////////////////////////////////////////
+                Rectangle {
+                    id: _OptItem
+                    Layout.fillWidth: true
+                    width: _mainLayout.width / 2
+                    height: _mainLayout.height / 4
+                    radius: _mainLayout.width * 0.05
+                    color: "lightblue"
+
+                    Image {
+                        id: _OptImg
+                        source: "Images/test3_picture.jpg"
+                        anchors.fill: parent
+                        asynchronous: true
+
+                        property bool rounded: true
+                        property bool adapt: true
+
+                        layer.enabled: rounded
+                        layer.effect: OpacityMask {
+                            maskSource: Item {
+                                width: _OptImg.width
+                                height: _OptImg.height
+                                Rectangle {
+                                    anchors.centerIn: parent
+                                    width: _OptImg.adapt ? _OptImg.width : Math.min(
+                                                           _OptImg.width,
+                                                           _OptImg.height)
+                                    height: _OptImg.adapt ? _OptImg.height : width
+                                    radius: _OptItem.radius
+                                }
+                            }
+                        }
+                    }
+
+                    Text {
+                        id: _OptText
+                        text: "Optimist Pessimist"
+                        anchors {
+                            horizontalCenter: parent.horizontalCenter
+                            bottom: parent.bottom
+                            bottomMargin: parent.height * 0.1
+                        }
+                        font.pixelSize: parent.width * 0.1
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            pageStack.push(Qt.resolvedUrl(
+                                               "qrc:/qml/Opt/OptPesRealTest.qml"), {
+                                               "pageStack": pageStack
+                                           })
+                        }
+                    }
+                }
+                ////////////////////////////////////////////////////////////////////
             }
         }
     }

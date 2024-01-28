@@ -17,10 +17,12 @@ OptPesReal::~OptPesReal()
 
 const QString OptPesReal::getQuestion()
 {
+    qDebug() << "Get Q";
     if (!m_in->atEnd()) {
         return m_in->readLine();
     } else {
         emit testEnd();
+        qDebug() << testResult();
         return "";
     }
 }
@@ -32,7 +34,12 @@ void OptPesReal::setAnswer(const int ans)
 
 void OptPesReal::resetTest()
 {
+    qDebug() << "Reset";
     m_answers.clear();
+    if(!m_in->seek(0))
+        qDebug() << "Seek fail";
+    else
+        qDebug() << "Seek Succes";
 }
 
 QString OptPesReal::testResult()
