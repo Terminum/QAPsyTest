@@ -1,21 +1,19 @@
-#ifndef AYZENKCLASS_H
-#define AYZENKCLASS_H
+#ifndef OPTPESREAL_H
+#define OPTPESREAL_H
 
 #include "basetestclass.h"
 
-class AyzenkClass : public BaseTestClass
+class OptPesReal : public BaseTestClass
 {
     Q_OBJECT
 public:
-    AyzenkClass();
-    ~AyzenkClass();
+    OptPesReal();
+    ~OptPesReal();
 
     Q_INVOKABLE const QString getQuestion();
     Q_INVOKABLE void setAnswer(const int ans);
     Q_INVOKABLE void resetTest();
-    Q_INVOKABLE int extIntroversia();
-    Q_INVOKABLE int neyrotizm();
-    Q_INVOKABLE bool lieCheck();
+    Q_INVOKABLE QString testResult();
 
 private:
     QFile testQuestions;
@@ -23,4 +21,4 @@ private:
     QVector<int> m_answers;
 };
 
-#endif // AYZENKCLASS_H
+#endif // OPTPESREAL_H

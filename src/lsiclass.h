@@ -1,17 +1,13 @@
 #ifndef LSICLASS_H
 #define LSICLASS_H
 
-#include <QObject>
-#include <QFile>
-#include <QTextStream>
-#include <QMap>
-#include <QDebug>
+#include "basetestclass.h"
 
-class LSIClass : public QObject
-{
+class LSIClass : public BaseTestClass {
     Q_OBJECT
+
 public:
-    LSIClass(QObject *parent = nullptr);
+    LSIClass();
     ~LSIClass();
 
     Q_INVOKABLE const QString getQuestion();
@@ -28,15 +24,10 @@ public:
     Q_INVOKABLE double rationalisTension(); //Рационализация
     Q_INVOKABLE QString getDescription(int index);
 
-signals:
-    void testEnd();
-
 private:
     QFile testQuestions;
     QTextStream *m_in;
     QVector<int> m_answers;
-    bool m_testEnded = false;
-
 };
 
 #endif // LSICLASS_H

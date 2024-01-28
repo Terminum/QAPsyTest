@@ -14,15 +14,18 @@ Item {
     ListModel {
         id: _themeModel
         ListElement {
-            themeName: "Тема 1"
+            themeName: "Life Style Index"
+            objectName: "Life Style Index"
             themeImage: "Images/test1_picture.jpg"
         }
         ListElement {
-            themeName: "Тема 2"
+            themeName: "Test Ayzenk"
+            objectName: "Test Ayzenk"
             themeImage: "Images/test2_picture.jpg"
         }
         ListElement {
-            themeName: "Тема 3"
+            themeName: "Optimist Pessimist"
+            objectName: "Optimist Pessimist"
             themeImage: "Images/test3_picture.jpg"
         }
         ListElement {

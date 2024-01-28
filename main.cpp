@@ -3,6 +3,7 @@
 #include <QQmlContext>
 #include "src/lsiclass.h"
 #include "src/ayzenkclass.h"
+#include "src/optpesreal.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +16,9 @@ int main(int argc, char *argv[])
 
     AyzenkClass ayzenk;
     engine.rootContext()->setContextProperty("Ayzenk", &ayzenk);
+
+    OptPesReal optimist;
+    engine.rootContext()->setContextProperty("Optimist", &optimist);
 
     const QUrl url(u"qrc:/QAPsyTest/main.qml"_qs);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

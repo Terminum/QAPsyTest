@@ -1,7 +1,6 @@
 #include "lsiclass.h"
 
-LSIClass::LSIClass(QObject *parent) :
-    QObject(parent)
+LSIClass::LSIClass()
 {
     testQuestions.setFileName(":/LSIIndexSrc/LifeStyleIndexKellermanKonte.txt");
     if (!testQuestions.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -21,7 +20,6 @@ const QString LSIClass::getQuestion()
     if (!m_in->atEnd()) {
         return m_in->readLine();
     } else {
-        m_testEnded = true;
         emit testEnd();
         qDebug() << "Overall:" << overallTension() * 100;
         return "";
@@ -30,15 +28,12 @@ const QString LSIClass::getQuestion()
 
 void LSIClass::setAnswer(const int ans)
 {
-    if(!m_testEnded) {
-        m_answers.push_back(ans);
-    }
+    m_answers.push_back(ans);
 }
 
 void LSIClass::resetTest()
 {
     qDebug() << "Reset test";
-    m_testEnded = false;
     m_answers.clear();
     if(!m_in->seek(0))
         qDebug() << "Seek fail";
@@ -48,16 +43,11 @@ void LSIClass::resetTest()
 
 double LSIClass::overallTension()
 {
-    if(!m_testEnded)
-        return 0;
     return (double)m_answers.toList().count(1) / (double)92;
 }
 
 double LSIClass::regressusTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[1];
     res += m_answers[4];
     res += m_answers[8];
@@ -81,9 +71,6 @@ double LSIClass::regressusTension()
 
 double LSIClass::substitutionTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[7];
     res += m_answers[9];
     res += m_answers[18];
@@ -100,9 +87,6 @@ double LSIClass::substitutionTension()
 
 double LSIClass::denialTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[0];
     res += m_answers[19];
     res += m_answers[22];
@@ -120,9 +104,6 @@ double LSIClass::denialTension()
 
 double LSIClass::projectioTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[11];
     res += m_answers[21];
     res += m_answers[27];
@@ -141,9 +122,6 @@ double LSIClass::projectioTension()
 
 double LSIClass::compensationTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[2];
     res += m_answers[14];
     res += m_answers[15];
@@ -160,9 +138,6 @@ double LSIClass::compensationTension()
 
 double LSIClass::hyperCompensationTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[16];
     res += m_answers[52];
     res += m_answers[60];
@@ -179,9 +154,6 @@ double LSIClass::hyperCompensationTension()
 
 double LSIClass::rationalisTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[3];
     res += m_answers[6];
     res += m_answers[13];
@@ -242,9 +214,6 @@ QString LSIClass::getDescription(int index)
 
 double LSIClass::repressionTension()
 {
-    if(!m_testEnded)
-        return 0;
-
     double res = m_answers[5];
     res += m_answers[10];
     res += m_answers[30];

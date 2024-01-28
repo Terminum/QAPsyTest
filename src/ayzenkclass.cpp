@@ -1,7 +1,6 @@
 #include "ayzenkclass.h"
 
-AyzenkClass::AyzenkClass(QObject *parent) :
-    QObject(parent)
+AyzenkClass::AyzenkClass()
 {
     testQuestions.setFileName(":/AyzenkSrc/QAyzenk.txt");
     if (!testQuestions.open(QIODevice::ReadOnly | QIODevice::Text))
@@ -21,7 +20,6 @@ const QString AyzenkClass::getQuestion()
     if (!m_in->atEnd()) {
         return m_in->readLine();
     } else {
-        m_testEnded = true;
         emit testEnd();
         return "";
     }
@@ -29,15 +27,12 @@ const QString AyzenkClass::getQuestion()
 
 void AyzenkClass::setAnswer(const int ans)
 {
-    if(!m_testEnded) {
-        m_answers.push_back(ans);
-    }
+    m_answers.push_back(ans);
 }
 
 void AyzenkClass::resetTest()
 {
     qDebug() << "Reset test";
-    m_testEnded = false;
     m_answers.clear();
     if(!m_in->seek(0))
         qDebug() << "Seek fail";
