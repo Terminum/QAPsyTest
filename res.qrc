@@ -33,5 +33,6 @@
         <file>qml/Ayzenk/AyzenkTest.qml</file>
         <file>qml/Opt/OptPesRealTest.qml</file>
         <file>OptPesSrc/OptPesRea.txt</file>
+        <file>qml/Opt/OptPesRealConclusion.qml</file>
     </qresource>
 </RCC>
