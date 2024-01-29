@@ -30,5 +30,8 @@
         <file>DescriptionOfTest.qml</file>
         <file>Images/homeIcon.svg</file>
         <file>GoHomeBtn.qml</file>
+        <file>qml/Ayzenk/AyzenkTest.qml</file>
+        <file>qml/Opt/OptPesRealTest.qml</file>
+        <file>OptPesSrc/OptPesRea.txt</file>
     </qresource>
 </RCC>

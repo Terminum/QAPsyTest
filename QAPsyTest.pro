@@ -38,7 +38,8 @@ DISTFILES += \
     LifeStyleCharts.qml \
     MainCustomBtn.qml \
     TestProject.qml \
-    TestScreen.qml
+    TestScreen.qml\
+#    qml/*
 
 contains(ANDROID_TARGET_ARCH,x86) {
     ANDROID_PACKAGE_SOURCE_DIR = \

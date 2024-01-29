@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "../../"
 
 Item {
     id: _window
@@ -11,7 +12,7 @@ Item {
         id: _bgImg
         anchors.fill: parent
 
-        source: "Images/testBg_picture.jpg"
+        source: "qrc:/Images/testBg_picture.jpg"
         asynchronous: true
         cache: true
 
@@ -41,7 +42,7 @@ Item {
             Layout.alignment: Qt.AlignRight | Qt.AlignTop
             Layout.topMargin: parent.width * 0.1
             onClicked: {
-                LifeStyle.resetTest()
+                Optimist.resetTest()
             }
         }
 
@@ -83,11 +84,11 @@ Item {
                     onClicked: {
                         if (!_buttonNo.visible) {
                             _buttonNo.visible = true
-                            LifeStyle.resetTest()
-                            _qText.text = LifeStyle.getQuestion()
+                            Optimist.resetTest()
+                            _qText.text = Optimist.getQuestion()
                         } else {
-                            LifeStyle.setAnswer(1)
-                            _qText.text = LifeStyle.getQuestion()
+                            Optimist.setAnswer(1)
+                            _qText.text = Optimist.getQuestion()
 
                         }
                     }
@@ -106,8 +107,8 @@ Item {
                     visible: false
 
                     onClicked: {
-                        LifeStyle.setAnswer(0)
-                        _qText.text = LifeStyle.getQuestion()
+                        Optimist.setAnswer(0)
+                        _qText.text = Optimist.getQuestion()
 
                     }
                 }
@@ -116,13 +117,13 @@ Item {
     }
 
     Connections {
-        target: LifeStyle
+        target: Optimist
 
         function onTestEnd() {
             console.log("Test End")
-            pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
-                               "pageStack": pageStack
-                           })
+//            pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
+//                               "pageStack": pageStack
+//                           })
         }
     }
 
