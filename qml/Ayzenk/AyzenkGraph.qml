@@ -23,40 +23,43 @@ Item {
 
         ChartView {
             id: _secondChart
-            title: "Напряженность психологической защиты"
+//            title: "Напряженность психологической защиты"
+            anchors.top: _goHomeBtn.bottom
+//            margins.top: 20
             width: parent.width
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignBottom
             legend.visible: false
             antialiasing: true
-            animationOptions: ChartView.SeriesAnimations
+
+
+            ValueAxis {
+                id: _x
+                min: 0
+                max: 24
+            }
+
+            ValueAxis {
+                id: _y
+                min: 0
+                max: 24
+            }
+
+
 
             ScatterSeries {
-                    id: _introversion
-                    name: "introversion"
-                    XYPoint { x: 1; y: 12 }
-            }
-            ScatterSeries {
-                    id: _extroversion
-                    name: "extroversion"
+                    id: _borders
+                    name: "User Score"
+                    XYPoint { x: 1; y: 12; /*Label{text: "introversion"}*/}
                     XYPoint { x: 24; y: 12 }
-            }
-            ScatterSeries {
-                    id: _emotionalInstability
-                    name: "Emotional Instability"
                     XYPoint { x: 12; y: 24 }
-            }
-            ScatterSeries {
-                    id: _emotionalStability
-                    name: "Emotional Stability"
                     XYPoint { x: 12; y: 1 }
             }
             ScatterSeries {
-                    id: _userScore
-                    name: "User Score"
-                    XYPoint { x: Ayzenk.extIntroversia(); y: Ayzenk.neyrotizm() }
+                id: _userScore
+                name: "Emotional Stability"
+                XYPoint { x: Ayzenk.extIntroversia(); y: Ayzenk.neyrotizm() }
             }
-
         }
     }
 
