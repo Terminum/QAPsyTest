@@ -121,9 +121,9 @@ Item {
 
         function onTestEnd() {
             console.log("Test End")
-//            pageStack.push(Qt.resolvedUrl("qrc:/LifeStyleCharts.qml"), {
-//                               "pageStack": pageStack
-//                           })
+            pageStack.push(Qt.resolvedUrl("qrc:/qml/Ayzenk/AyzenkGraph.qml"), {
+                               "pageStack": pageStack
+                           })
         }
     }
 
