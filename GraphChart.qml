@@ -8,6 +8,8 @@ Item {
     id: _window
 
     property StackView pageStack: StackView.view
+    property color accentColor: "#03524D"
+    property color secondaryColor: "#1C6763"
 
     ColumnLayout {
         id: _mainLayout
@@ -41,7 +43,6 @@ Item {
                 }
 
                 BarSet {
-
                     values: [LifeStyle.repressionTension(
                             ), LifeStyle.regressusTension(
                             ), LifeStyle.substitutionTension(
@@ -100,27 +101,37 @@ Item {
         standardButtons: Dialog.Ok
         onAccepted: visible = false
 
-        Flickable {
-            id: _scrollWrapper
+        PaddedRectangle {
             anchors.fill: parent
+            border.color: accentColor
+            border.width: 3
+            radius: 5
 
-            clip: true
-            boundsMovement: Flickable.StopAtBounds
-            boundsBehavior: Flickable.DragAndOvershootBounds
-
-            contentHeight: _textArea.paintedHeight
-            contentWidth: parent.width
-
-            ScrollBar.vertical: ScrollBar {
-                anchors.right: parent.right
-                policy: ScrollBar.AlwaysOff
-            }
-
-            TextArea {
-                id: _textArea
+            Flickable {
+                id: _scrollWrapper
                 anchors.fill: parent
-                readOnly: true
-                wrapMode: TextEdit.WordWrap
+
+                clip: true
+                boundsMovement: Flickable.StopAtBounds
+                boundsBehavior: Flickable.DragAndOvershootBounds
+
+                contentHeight: _textArea.height
+                contentWidth: parent.width
+
+                ScrollBar.vertical: ScrollBar {
+                    anchors.right: parent.right
+                    policy: ScrollBar.AlwaysOff
+                }
+
+                Text {
+                    id: _textArea
+                    width: parent.width
+                    focus: true
+                    wrapMode: TextArea.Wrap
+                    font.pixelSize: 14
+                    padding: 15
+                    bottomPadding: 0
+                }
             }
         }
     }
