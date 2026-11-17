@@ -1,0 +1,45 @@
+# Qt Creator: локальные настройки (пути, киты, подпись)
+*.pro.user
+*.pro.user.*
+CMakeLists.txt.user*
+*.autosave
+
+# Каталоги сборки
+build/
+build-*/
+
+# Артефакты qmake / moc / rcc
+Makefile*
+.qmake.stash
+.qmake.cache
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.o
+*.obj
+*.qmlc
+*.jsc
+
+# Android (генерируется при сборке)
+android/.gradle/
+android/build/
+android/local.properties
+android-build/
+*.apk
+*.aab
+
+# iOS / Xcode
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM/
+*.dSYM.zip
+
+# macOS
+.DS_Store
+
+# Claude Code: локальные настройки
+.claude/settings.local.json

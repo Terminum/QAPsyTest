@@ -27,7 +27,9 @@ int main(int argc, char *argv[])
                 QCoreApplication::exit(-1);
         }, Qt::QueuedConnection);
     engine.load(url);
+#ifdef Q_OS_ANDROID
     QNativeInterface::QAndroidApplication::hideSplashScreen(500);
+#endif
 
     return app.exec();
 }
